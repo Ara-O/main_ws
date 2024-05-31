@@ -15,6 +15,7 @@ setup(
         (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
         (os.path.join('share', package_name, 'urdf'), glob('urdf/*')),
+        (os.path.join('share', package_name, 'p3dx_description', 'meshes'), glob('p3dx_description/meshes/*')),
         (os.path.join('share', package_name, 'p3dx_gazebo'), glob('p3dx_gazebo/*'))
     ],
     install_requires=['setuptools'],
