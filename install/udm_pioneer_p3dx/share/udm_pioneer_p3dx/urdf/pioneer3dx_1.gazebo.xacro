@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <robot name="pioneer_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- properties (constants) -->
-  <property name="ns" value="p3dx" />
+  <xacro:property name="ns" value="p3dx" />
 
 
 

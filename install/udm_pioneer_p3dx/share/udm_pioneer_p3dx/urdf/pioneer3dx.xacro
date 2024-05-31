@@ -4,11 +4,6 @@
 This is the xacro description of a Pioneer 3DX, to be used in rviz and gazebo.
 Copyright (C) 2013 Rafael Berkvens rafael.berkvens@uantwerpen.be
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -24,9 +19,9 @@ work original in ucs-ros-pkg.
 <robot name="pioneer3dx" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- import all gazebo-customization elements, including gazebo colors -->
-  <xacro:include filename="$(find p3dx_description)/urdf/pioneer3dx.gazebo.xacro" />
+  <xacro:include filename="$(find udm_pioneer_p3dx)/urdf/pioneer3dx.gazebo.xacro" />
   <!-- import the pioneer 3dx's wheels -->
-  <xacro:include filename="$(find p3dx_description)/urdf/pioneer3dx_wheel.xacro" />
+  <xacro:include filename="$(find udm_pioneer_p3dx)/urdf/pioneer3dx_wheel.xacro" />
 
   <!-- chassis -->
 	<link name="base_link">
