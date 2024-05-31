@@ -41,7 +41,7 @@ work original in ucs-ros-pkg.
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry name="pioneer_geom">
-					<mesh filename="package://p3dx_description/meshes/${suffix}_wheel.stl" />
+					<mesh filename="$(find udm_pioneer_p3dx)/p3dx_description/meshes/${suffix}_wheel.stl" />
 				</geometry>
 				<material name="WheelBlack">
 					<color rgba="0.117 0.117 0.117 1" />
@@ -75,7 +75,7 @@ work original in ucs-ros-pkg.
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry name="pioneer_geom">
-					<mesh filename="package://p3dx_description/meshes/${suffix}_hubcap.stl" />
+					<mesh filename="$(find udm_pioneer_p3dx)/p3dx_description/meshes/${suffix}_hubcap.stl" />
 				</geometry>
 
 				<material name="HubcapYellow">
