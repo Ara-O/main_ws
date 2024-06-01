@@ -23,32 +23,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <!-- properties (constants) -->
   <xacro:property name="ns" value="p3dx" />
 
-
-
-
   <!-- base_link -->
 	<gazebo reference="base_link">
-		<material>Gazebo/Red</material>
+		<material value="Gazebo/Red" />
 	</gazebo>
 
   <!-- top_plate -->
   <gazebo reference="top_plate">
-    <material>Gazebo/Black</material>
+    <material value="Gazebo/Red" />
   </gazebo>
   
   <!-- swivel -->
   <gazebo reference="swivel">
-    <material>Gazebo/Grey</material>
+    <material value="Gazebo/Grey" />
   </gazebo>
   
   <!-- center_hubcap -->
 	<gazebo reference="center_hubcap">
-		<material>Gazebo/Grey</material>
+		<material value="Gazebo/Grey">Gazebo/Grey</material>
 	</gazebo>
   
   <!-- center_wheel -->
 	<gazebo reference="center_wheel">
-		<material>Gazebo/Black</material>
+		<material value="Gazebo/Black">Gazebo/Black</material>
 		<mu1>10.0</mu1>
 		<mu2>10.0</mu2>
 		<kp>1000000.0</kp>
