@@ -24,37 +24,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <xacro:property name="ns" value="p3dx" />
 
   <!-- base_link -->
-	<gazebo reference="base_link">
-		<material value="Gazebo/Red" />
-	</gazebo>
+  <gazebo reference="base_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
 
   <!-- top_plate -->
   <gazebo reference="top_plate">
-    <material value="Gazebo/Red" />
+    <material>Gazebo/Red</material>
   </gazebo>
   
   <!-- swivel -->
   <gazebo reference="swivel">
-    <material value="Gazebo/Grey" />
+    <material>Gazebo/Grey</material>
   </gazebo>
   
   <!-- center_hubcap -->
-	<gazebo reference="center_hubcap">
-		<material value="Gazebo/Grey">Gazebo/Grey</material>
-	</gazebo>
+  <gazebo reference="center_hubcap">
+    <material>Gazebo/Grey</material>
+  </gazebo>
   
   <!-- center_wheel -->
-	<gazebo reference="center_wheel">
-		<material value="Gazebo/Black">Gazebo/Black</material>
-		<mu1>10.0</mu1>
-		<mu2>10.0</mu2>
-		<kp>1000000.0</kp>
-		<kd>1.0</kd>
-	</gazebo>
+  <gazebo reference="center_wheel">
+   <material>Gazebo/Black</material>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
   
   <!-- front_sonar -->  
   <gazebo reference="front_sonar">
-    <material value="Gazebo/Yellow" />
+    <material>Gazebo/Yellow</material>
   </gazebo>
 
   <!-- differential drive -->
@@ -97,6 +97,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	</gazebo>	
 	<!-- lms100 -->
 	<gazebo reference="lms100">
+		<material>Gazebo/Red</material>
 		<sensor type="ray" name="head_hokuyo_sensor">
 			<pose>0 0 0 0 0 0</pose>
 			<visualize>false</visualize>

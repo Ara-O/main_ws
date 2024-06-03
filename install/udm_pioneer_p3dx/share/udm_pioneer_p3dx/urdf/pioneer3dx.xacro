@@ -64,12 +64,12 @@ work original in ucs-ros-pkg.
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/top.stl" />
 			</geometry>
 
-			<material>
+			<material name="top_plate_material">
 				<color rgba="0.038 0.038 0.038 1.0" />
 			</material>
 		</visual>
 
-		<collision>
+		<collision name="top_plate_collision">
 			<origin xyz="0.0 0 0" rpy="0 0 0" />
 			<geometry name="pioneer_geom">
 				<box size="0.45 0.38 0.01" />
