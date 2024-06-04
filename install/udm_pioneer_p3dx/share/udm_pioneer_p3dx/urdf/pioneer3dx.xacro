@@ -19,10 +19,14 @@ work original in ucs-ros-pkg.
 <robot name="pioneer3dx" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- import all gazebo-customization elements, including gazebo colors -->
-  <xacro:include filename="$(find udm_pioneer_p3dx)/urdf/pioneer3dx.gazebo.xacro" />
+  <!-- <xacro:include filename="$(find udm_pioneer_p3dx)/urdf/pioneer3dx.gazebo.xacro" /> -->
   <!-- import the pioneer 3dx's wheels -->
-  <xacro:include filename="$(find udm_pioneer_p3dx)/urdf/pioneer3dx_wheel.xacro" />
-
+<link name="base_cover">
+   </link>
+   
+    <gazebo reference="base_link">
+   	<material>Gazebo/RedBright</material>
+   </gazebo>
   <!-- chassis -->
 	<link name="base_link">
 		<inertial>
@@ -32,14 +36,11 @@ work original in ucs-ros-pkg.
 			<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
 		</inertial>
 
-		<visual name="base_visual">
+		<visual>
 			<origin xyz="-0.045 0 0.148" rpy="0 0 0" />
-			<geometry name="pioneer_geom">
+			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/chassis.stl" />
 			</geometry>
-			<material name="ChassisRed">
-				<color rgba="0.851 0.0 0.0 1.0" />
-			</material>
 		</visual>
 
 		<collision>
@@ -50,6 +51,14 @@ work original in ucs-ros-pkg.
 		</collision>
 	</link>
 
+   <joint name="base_cover_joint" type="fixed">
+     <parent link="base_cover"/>
+     <child link="base_link"/>
+   </joint>
+
+ <gazebo reference="top_plate">
+   	<material>Gazebo/Black</material>
+   </gazebo>
   <!-- top_plate -->
 	<link name="top_plate">
 		<inertial>
@@ -57,21 +66,19 @@ work original in ucs-ros-pkg.
 			<origin xyz="0 0 0" />
 			<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
 		</inertial>
-
-		<visual name="base_visual">
+		
+		<visual>
+			<material name="green_color" />
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry name="top_geom">
-				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/top.stl" />
+			<geometry>
+				 <mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/top.stl" />
 			</geometry>
 
-			<material name="top_plate_material">
-				<color rgba="0.038 0.038 0.038 1.0" />
-			</material>
 		</visual>
 
 		<collision name="top_plate_collision">
 			<origin xyz="0.0 0 0" rpy="0 0 0" />
-			<geometry name="pioneer_geom">
+			<geometry>
 				<box size="0.45 0.38 0.01" />
 			</geometry>
 		</collision>
@@ -83,6 +90,10 @@ work original in ucs-ros-pkg.
 		<child link="top_plate" />
 	</joint>
 
+ <gazebo reference="swivel">
+   	<material>Gazebo/DarkGrey</material>
+   </gazebo>
+   
   <!-- swivel -->
 	<link name="swivel">
 		<inertial>
@@ -91,14 +102,11 @@ work original in ucs-ros-pkg.
 			<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 		</inertial>
 
-		<visual name="base_visual">
+		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry name="pioneer_geom">
+			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/swivel.stl" />
 			</geometry>
-			<material name="swivel">
-				<color rgba="0.5 0.5 0.5 1" />
-			</material>
 		</visual>
 
 		<collision>
@@ -118,6 +126,10 @@ work original in ucs-ros-pkg.
 		<parent link="base_link" />
 		<child link="swivel" />
 	</joint>
+	
+	 <gazebo reference="center_hubcap">
+   	<material>Gazebo/Grey</material>
+   </gazebo>
 
   <!-- center_hubcap -->
 	<link name="center_hubcap">
@@ -128,14 +140,11 @@ work original in ucs-ros-pkg.
 				iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
 		</inertial>
 
-		<visual name="base_visual">
+		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry name="pioneer_geom">
+			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/center_hubcap.stl" />
 			</geometry>
-			<material name="swivel">
-				<color rgba="0.5 0.5 0.5 1" />
-			</material>
 		</visual>
 
 		<collision>
@@ -155,6 +164,10 @@ work original in ucs-ros-pkg.
 		<parent link="swivel" />
 		<child link="center_wheel" />
 	</joint>
+	
+	 <gazebo reference="center_wheel">
+   	<material>Gazebo/Black</material>
+   </gazebo>
 
   <!-- center_wheel -->
 	<link name="center_wheel">
@@ -165,14 +178,11 @@ work original in ucs-ros-pkg.
 				iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
 		</inertial>
 
-		<visual name="base_visual">
+		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry name="pioneer_geom">
+			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/center_wheel.stl" />
 			</geometry>
-			<material name="WheelBlack">
-				<color rgba="0.117 0.117 0.117 1" />
-			</material>
 		</visual>
 
 		<collision>
@@ -189,9 +199,9 @@ work original in ucs-ros-pkg.
 		<child link="center_hubcap"/>
 	</joint>
 
-	<xacro:p3dx_wheel suffix="left" parent="base_link" reflect="1"/>
-	<xacro:p3dx_wheel suffix="right" parent="base_link" reflect="-1"/>
-
+ <gazebo reference="front_sonar">
+   	<material>Gazebo/Yellow</material>
+   </gazebo>
   <!-- front_sonar -->
 	<link name="front_sonar">
 		<inertial>
@@ -200,14 +210,11 @@ work original in ucs-ros-pkg.
 			<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
 		</inertial>
 		
-		<visual name="front_sonar_vis">
+		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0" />
-			<geometry name="pioneer_geom">
+			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/front_sonar.stl" />
 			</geometry>
-			<material name="SonarYellow">
-				<color rgba="0.715 0.583 0.210 1.0" />
-			</material>
 		</visual>
 		
 		<collision>
@@ -232,7 +239,7 @@ work original in ucs-ros-pkg.
 			<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
 		</inertial>
 
-		<visual name="lms_100">
+		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/lms100.dae" />     
@@ -254,4 +261,6 @@ work original in ucs-ros-pkg.
 		<child link="lms100" />
 	</joint>
 
+
 </robot>
+

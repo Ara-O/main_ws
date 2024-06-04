@@ -23,6 +23,7 @@ p3dx_description/meshes/lms100.dae
 p3dx_description/meshes/right_hubcap.stl
 p3dx_description/meshes/right_wheel.stl
 p3dx_description/meshes/swivel.stl
+p3dx_description/meshes/top.dae
 p3dx_description/meshes/top.stl
 p3dx_gazebo/one_robot.launch.py
 p3dx_gazebo/robots44211.launch.py
