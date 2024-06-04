@@ -32,6 +32,7 @@ test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
 udm_pioneer_p3dx/__init__.py
+urdf/Untitled Document 1
 urdf/materials.xacro
 urdf/pioneer3dx.gazebo.xacro
 urdf/pioneer3dx.xacro

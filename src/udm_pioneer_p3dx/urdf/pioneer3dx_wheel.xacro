@@ -38,20 +38,16 @@ work original in ucs-ros-pkg.
 					iyz="0" izz="0.011763977943" />
 			</inertial>
 
-			<visual name="p3dx_${suffix}_wheel_vis">
+			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry name="pioneer_geom">
-					<mesh filename="$(find udm_pioneer_p3dx)/p3dx_description/meshes/${suffix}_wheel.stl" />
+				<geometry>
+					<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/${suffix}_wheel.stl" />
 				</geometry>
-				<material name="WheelBlack">
-					<color rgba="0.117 0.117 0.117 1" />
-				</material>
 			</visual>
 
 			<collision>
 				<origin xyz="0 0 0" rpy="${-3.1415927/2} 0 0" />
 				<geometry>
-					<!--<mesh filename="package://p3dx_description/meshes/${suffix}_wheel.stl"/> -->
 					<cylinder radius="0.09" length="0.01" />
 				</geometry>
 			</collision>
@@ -72,15 +68,11 @@ work original in ucs-ros-pkg.
 					iyz="0" izz="0.011763977943" />
 			</inertial>
 
-			<visual name="p3dx_${suffix}_hubcap_vis">
+			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry name="pioneer_geom">
-					<mesh filename="$(find udm_pioneer_p3dx)/p3dx_description/meshes/${suffix}_hubcap.stl" />
+				<geometry>
+					<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/${suffix}_hubcap.stl" />
 				</geometry>
-
-				<material name="HubcapYellow">
-					<color rgba="1.0 0.811 0.151 1.0" />
-				</material>
 			</visual>
 
 			<collision>
@@ -111,18 +103,6 @@ work original in ucs-ros-pkg.
         <mechanicalReduction>${reflect * 624/35 * 80/19}</mechanicalReduction>
       </actuator>
     </transmission>
-
-		<gazebo reference="p3dx_${suffix}_hubcap">
-			<material>Gazebo/Yellow</material>
-		</gazebo>
-
-		<gazebo reference="p3dx_${suffix}_wheel">
-			<material>Gazebo/Black</material>
-			<mu1>0.5</mu1>
-			<mu2>50.0</mu2>
-			<kp>100000000.0</kp>
-			<kd>1.0</kd>
-		</gazebo>
 
 	</xacro:macro>
 
