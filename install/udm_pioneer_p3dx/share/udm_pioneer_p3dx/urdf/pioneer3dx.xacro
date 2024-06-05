@@ -335,5 +335,102 @@ work original in ucs-ros-pkg.
 		<parent link="p3dx_left_wheel" />
 		<child link="p3dx_left_hubcap" />
 	</joint>
+	
+	
+    <transmission name="base_link_left_wheel_trans">
+      <type>pr2_mechanism_model/SimpleTransmission</type>
+      <joint name="base_left_wheel_joint" />
+      <actuator name="base_left_wheel_motor">
+        <hardwareInterface>VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>${624/35 * 80/19}</mechanicalReduction>
+      </actuator>
+    </transmission>
+    
+
+	
+     <gazebo reference="p3dx_right_wheel">
+   	<material>Gazebo/Black</material>
+   </gazebo>
+   
+      <gazebo reference="p3dx_right_hubcap">
+   	<material>Gazebo/Yellow</material>
+   </gazebo>
+	
+	
+	<!-- RIGHT WHEEL -->
+	<link name="p3dx_right_wheel">
+		<inertial>
+			<mass value="0.5" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/right_wheel.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="-1.57079635 0 0" />
+			<geometry>
+				<cylinder radius="0.09" length="0.01" />
+			</geometry>
+		</collision>
+	</link>
+
+		
+	<joint name="base_right_wheel_joint" type="continuous">
+		<axis xyz="0 1 0" />
+		<anchor xyz="0 0 0" />
+		<limit effort="100" velocity="100" />
+		<joint_properties damping="0.0" friction="0.0" />
+		<origin xyz="0 -0.158 0.091" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="p3dx_right_wheel" />
+	</joint>
+		
+		
+	<link name="p3dx_right_hubcap">
+		<inertial>
+			<mass value="0.01" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/right_hubcap.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0 0 0" />
+			</geometry>
+		</collision>
+	</link>
+
+	
+	<joint name="base_right_hubcap_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="p3dx_right_wheel" />
+		<child link="p3dx_right_hubcap" />
+	</joint>
+	
+	
+    <transmission name="base_link_right_wheel_trans">
+      <type>pr2_mechanism_model/SimpleTransmission</type>
+      <joint name="base_right_wheel_joint" />
+      <actuator name="base_right_wheel_motor">
+        <hardwareInterface>VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>${-624/35 * 80/19}</mechanicalReduction>
+      </actuator>
+    </transmission>
 </robot>
 

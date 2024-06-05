@@ -23,88 +23,83 @@ work original in ucs-ros-pkg.
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-	<!-- properties (constants) -->
-	<xacro:property name="M_PI" value="3.14159" />
+<!-- properties (constants) -->
+<xacro:property name="M_PI" value="3.14159" />
 
 	<!-- right/left hubcap + wheel -->
-	<xacro:macro name="p3dx_wheel" params="suffix parent reflect">
+<xacro:macro name="p3dx_wheel" params="suffix parent reflect">
 	
 		<!-- wheel -->
-		<link name="p3dx_${suffix}_wheel">
-			<inertial>
-				<mass value="0.5" />
-				<origin xyz="0 0 0" />
-				<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
-					iyz="0" izz="0.011763977943" />
-			</inertial>
+	<link name="p3dx_${suffix}_wheel">
+		<inertial>
+			<mass value="0.5" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
 
-			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry>
-					<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/${suffix}_wheel.stl" />
-				</geometry>
-			</visual>
-
-			<collision>
-				<origin xyz="0 0 0" rpy="${-3.1415927/2} 0 0" />
-				<geometry>
-					<cylinder radius="0.09" length="0.01" />
-				</geometry>
-			</collision>
-		</link>
-
-		<joint name="base_${suffix}_hubcap_joint" type="fixed">
+		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<parent link="p3dx_${suffix}_wheel" />
-			<child link="p3dx_${suffix}_hubcap" />
-		</joint>
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/${suffix}_wheel.stl" />
+			</geometry>
+		</visual>
 
-		<!-- hubcap -->
-		<link name="p3dx_${suffix}_hubcap">
-			<inertial>
-				<mass value="0.01" />
-				<origin xyz="0 0 0" />
-				<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
-					iyz="0" izz="0.011763977943" />
-			</inertial>
-
-			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry>
-					<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/${suffix}_hubcap.stl" />
-				</geometry>
-			</visual>
-
-			<collision>
-				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry>
-					<box size="0 0 0" />
-				</geometry>
-			</collision>
-		</link>
-
-		<joint name="base_${suffix}_wheel_joint" type="continuous">
-			<axis xyz="0 1 0" />
-			<anchor xyz="0 0 0" />
-			<limit effort="100" velocity="100" />
-			<joint_properties damping="0.0" friction="0.0" />
-			<origin xyz="0 ${reflect*0.158} 0.091" rpy="0 0 0" />
-			<parent link="base_link" />
-			<child link="p3dx_${suffix}_wheel" />
-		</joint>
+		<collision>
+			<origin xyz="0 0 0" rpy="${-3.1415927/2} 0 0" />
+			<geometry>
+				<cylinder radius="0.09" length="0.01" />
+			</geometry>
+		</collision>
+	</link>
+	
+	<joint name="base_${suffix}_wheel_joint" type="continuous">
+		<axis xyz="0 1 0" />
+		<anchor xyz="0 0 0" />
+		<limit effort="100" velocity="100" />
+		<joint_properties damping="0.0" friction="0.0" />
+		<origin xyz="0 ${reflect*0.158} 0.091" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="p3dx_${suffix}_wheel" />
+	</joint>
 		
-		<!-- gazebo elements -->
 
-    <transmission name="${parent}_${suffix}_wheel_trans">
-      <type>pr2_mechanism_model/SimpleTransmission</type>
-      <joint name="base_${suffix}_wheel_joint" />
-      <actuator name="base_${suffix}_wheel_motor">
-        <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <mechanicalReduction>${reflect * 624/35 * 80/19}</mechanicalReduction>
-      </actuator>
-    </transmission>
+	<!-- hubcap -->
+	<link name="p3dx_${suffix}_hubcap">
+		<inertial>
+			<mass value="0.01" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
 
-	</xacro:macro>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/${suffix}_hubcap.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0 0 0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_${suffix}_hubcap_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="p3dx_${suffix}_wheel" />
+		<child link="p3dx_${suffix}_hubcap" />
+	</joint>
+
+
+
+	<!-- gazebo elements -->
+
+
+</xacro:macro>
 
 </robot>
 
