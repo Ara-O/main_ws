@@ -127,7 +127,7 @@ work original in ucs-ros-pkg.
 		<collision>
 			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
 			<geometry>
-				<box size="0.1 0.1 0.1" />
+				<box size="0 0 0" />
 			</geometry>
 		</collision>
 	</link>
@@ -165,7 +165,7 @@ work original in ucs-ros-pkg.
 		<collision>
 			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
 			<geometry>
-				<box size="0.1 0.1 0.1" />
+				<box size="0 0 0" />
 			</geometry>
 		</collision>
 	</link>
@@ -182,7 +182,6 @@ work original in ucs-ros-pkg.
 	
 	 <gazebo reference="center_wheel">
    	<material>Gazebo/Black</material>
-	<self_collide>true</self_collide>
    </gazebo>
 
   <!-- center_wheel -->
@@ -202,9 +201,9 @@ work original in ucs-ros-pkg.
 		</visual>
 
 		<collision>
-		    <origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
+		    <origin xyz="0 0 0" rpy="-1.57079635 0 0"/>
 		    <geometry>
-			<cylinder radius="0.0375" length="0.01" />
+				<cylinder radius="0.0375" length="0.01" />
 		    </geometry>
 		</collision>
 	</link>
@@ -436,7 +435,7 @@ work original in ucs-ros-pkg.
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<box size="0.01 0.01 0.01" />
+				<box size="0 0 0" />
 			</geometry>
 		</collision> 
 	
