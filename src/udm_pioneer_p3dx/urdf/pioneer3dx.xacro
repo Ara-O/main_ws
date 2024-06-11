@@ -41,6 +41,8 @@ work original in ucs-ros-pkg.
    	<material>Gazebo/RedBright</material>
    </gazebo>
   <!-- chassis -->
+  <!-- <link name="dummy_link"> -->
+  <!-- </link> -->
 	<link name="base_link">
 		<inertial>
 			<mass value="3.5" />
@@ -64,10 +66,10 @@ work original in ucs-ros-pkg.
 		</collision>
 	</link>
 
-   <!-- <joint name="base_link_joint" type="fixed"> -->
-   <!--    <parent link="base_cover"/> -->
-  <!--     <child link="base_link"/> -->
-  <!--   </joint> -->
+    <!-- <joint name="base_link_joint" type="fixed"> -->
+       <!-- <parent link="dummy_link"/>  -->
+       <!-- <child link="base_link"/>  -->
+     <!-- </joint>  -->
 
  <gazebo reference="top_plate">
    	<material>Gazebo/Black</material>
@@ -123,7 +125,7 @@ work original in ucs-ros-pkg.
 		</visual>
 
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
 			<geometry>
 				<box size="0 0 0" />
 			</geometry>
@@ -148,20 +150,20 @@ work original in ucs-ros-pkg.
 	<link name="center_hubcap">
 		<inertial>
 			<mass value="0.01" />
-			<origin xyz="0 0 0" />
+			<origin xyz="0.0 0.0 0.0" />
 			<inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
 				iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
 		</inertial>
 
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
 			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/center_hubcap.stl" />
 			</geometry>
 		</visual>
 
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
 			<geometry>
 				<box size="0 0 0" />
 			</geometry>
@@ -180,34 +182,35 @@ work original in ucs-ros-pkg.
 	
 	 <gazebo reference="center_wheel">
    	<material>Gazebo/Black</material>
+	<self_collide>true</self_collide>
    </gazebo>
 
   <!-- center_wheel -->
 	<link name="center_wheel">
 		<inertial>
 			<mass value="0.1" />
-			<origin xyz="0 0 0" />
+			<origin xyz="0.0 0.0 0.0" />
 			<inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
 				iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
 		</inertial>
 
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
 			<geometry>
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/center_wheel.stl" />
 			</geometry>
 		</visual>
 
 		<collision>
-			<origin xyz="0 0 0" rpy="${-pi/2.0} 0 0" />
-			<geometry>
-				<cylinder radius="0.0375" length="0.01" />
-			</geometry>
+		    <origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
+		    <geometry>
+			<cylinder radius="0.0375" length="0.01" />
+		    </geometry>
 		</collision>
 	</link>
 
 	<joint name="center_wheel_joint" type="fixed">
-		<origin xyz="-0.0035 0 -0.001" rpy="0 0 0"/>
+		<origin xyz="-0.0035 0.0 -0.001" rpy="0.0 0.0 0.0"/>
 		<parent link="center_wheel"/>
 		<child link="center_hubcap"/>
 	</joint>
@@ -262,7 +265,7 @@ work original in ucs-ros-pkg.
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<box size="0.1 0.1 0.1" />
+				<box size="0 0 0" />
 			</geometry>
 		</collision>
 	</link>
@@ -277,6 +280,10 @@ work original in ucs-ros-pkg.
 	
      <gazebo reference="p3dx_left_wheel">
    	<material>Gazebo/Black</material>
+	<mu1>0.5</mu1>
+			<mu2>50.0</mu2>
+			<kp>100000000.0</kp>
+			<kd>1.0</kd>
    </gazebo>
    
       <gazebo reference="p3dx_left_hubcap">
@@ -335,13 +342,12 @@ work original in ucs-ros-pkg.
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/left_hubcap.stl" />
 			</geometry>
 		</visual>
-
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
 				<box size="0 0 0" />
 			</geometry>
-		</collision>
+		</collision> 
 	</link>
 
 	
@@ -365,6 +371,10 @@ work original in ucs-ros-pkg.
 	
      <gazebo reference="p3dx_right_wheel">
    	<material>Gazebo/Black</material>
+	<mu1>0.5</mu1>
+			<mu2>50.0</mu2>
+			<kp>100000000.0</kp>
+			<kd>1.0</kd>
    </gazebo>
    
       <gazebo reference="p3dx_right_hubcap">
@@ -422,13 +432,14 @@ work original in ucs-ros-pkg.
 				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/right_hubcap.stl" />
 			</geometry>
 		</visual>
-
+	
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
 				<box size="0 0 0" />
 			</geometry>
-		</collision>
+		</collision> 
+	
 	</link>
 
 	
