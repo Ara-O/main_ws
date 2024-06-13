@@ -1,0 +1,64 @@
+[0.441s] Invoking command in '/home/ara/main_ws/src/udm_pioneer_p3dx': PYTHONPATH=/home/ara/main_ws/build/udm_pioneer_p3dx/prefix_override:/home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/udm_pioneer_p3dx build --build-base /home/ara/main_ws/build/udm_pioneer_p3dx/build install --record /home/ara/main_ws/build/udm_pioneer_p3dx/install.log --install-scripts $base/lib/udm_pioneer_p3dx --single-version-externally-managed install_data
+[0.589s] running egg_info
+[0.590s] creating ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info
+[0.590s] writing ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/PKG-INFO
+[0.590s] writing dependency_links to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/dependency_links.txt
+[0.590s] writing entry points to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/entry_points.txt
+[0.591s] writing requirements to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/requires.txt
+[0.591s] writing top-level names to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/top_level.txt
+[0.592s] writing manifest file '../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/SOURCES.txt'
+[0.622s] reading manifest file '../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/SOURCES.txt'
+[0.623s] writing manifest file '../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/SOURCES.txt'
+[0.623s] running build
+[0.623s] running build_py
+[0.624s] creating /home/ara/main_ws/build/udm_pioneer_p3dx/build
+[0.624s] creating /home/ara/main_ws/build/udm_pioneer_p3dx/build/lib
+[0.624s] creating /home/ara/main_ws/build/udm_pioneer_p3dx/build/lib/udm_pioneer_p3dx
+[0.624s] copying udm_pioneer_p3dx/__init__.py -> /home/ara/main_ws/build/udm_pioneer_p3dx/build/lib/udm_pioneer_p3dx
+[0.624s] running install
+[0.625s] running install_lib
+[0.626s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx
+[0.626s] copying /home/ara/main_ws/build/udm_pioneer_p3dx/build/lib/udm_pioneer_p3dx/__init__.py -> /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx
+[0.627s] byte-compiling /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx/__init__.py to __init__.cpython-38.pyc
+[0.627s] running install_data
+[0.628s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/ament_index
+[0.628s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/ament_index/resource_index
+[0.628s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/ament_index/resource_index/packages
+[0.628s] copying resource/udm_pioneer_p3dx -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/ament_index/resource_index/packages
+[0.628s] copying package.xml -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx
+[0.629s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/launch
+[0.629s] copying launch/main44211.launch.py -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/launch
+[0.629s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/worlds
+[0.629s] copying worlds/feb2_scenario.world -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/worlds
+[0.629s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf
+[0.630s] copying urdf/pioneer3dx.xacro -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf
+[0.630s] copying urdf/pioneer3dx_1.gazebo.xacro -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf
+[0.630s] copying urdf/pioneer3dx.gazebo.xacro -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf
+[0.630s] copying urdf/pioneer3dx_wheel.xacro -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf
+[0.630s] copying urdf/materials.xacro -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf
+[0.631s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description
+[0.631s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.631s] copying p3dx_description/meshes/back_sonar.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.672s] copying p3dx_description/meshes/front_sonar.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.675s] copying p3dx_description/meshes/top.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.676s] copying p3dx_description/meshes/left_hubcap.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.677s] copying p3dx_description/meshes/right_wheel.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.677s] copying p3dx_description/meshes/center_wheel.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.678s] copying p3dx_description/meshes/swivel.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.679s] copying p3dx_description/meshes/left_wheel.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.680s] copying p3dx_description/meshes/top.dae -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.681s] copying p3dx_description/meshes/center_hubcap.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.681s] copying p3dx_description/meshes/right_hubcap.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.682s] copying p3dx_description/meshes/lms100.dae -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.683s] copying p3dx_description/meshes/Coordinates -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.683s] copying p3dx_description/meshes/back_rim.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.687s] copying p3dx_description/meshes/front_rim.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.691s] copying p3dx_description/meshes/chassis.stl -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes
+[0.692s] creating /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo
+[0.692s] copying p3dx_gazebo/robots44211.launch.py -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo
+[0.692s] copying p3dx_gazebo/one_robot.launch.py -> /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo
+[0.693s] running install_egg_info
+[0.694s] Copying ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info to /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info
+[0.695s] running install_scripts
+[0.707s] writing list of installed files to '/home/ara/main_ws/build/udm_pioneer_p3dx/install.log'
+[0.729s] Invoked command in '/home/ara/main_ws/src/udm_pioneer_p3dx' returned '0': PYTHONPATH=/home/ara/main_ws/build/udm_pioneer_p3dx/prefix_override:/home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/udm_pioneer_p3dx build --build-base /home/ara/main_ws/build/udm_pioneer_p3dx/build install --record /home/ara/main_ws/build/udm_pioneer_p3dx/install.log --install-scripts $base/lib/udm_pioneer_p3dx --single-version-externally-managed install_data

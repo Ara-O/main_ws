@@ -1,0 +1,33 @@
+
+     <gazebo reference="top_plate">
+   	<material>Gazebo/Red</material>
+   </gazebo>
+   <mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/top.stl" />
+   
+		<gazebo reference="p3dx_${suffix}_hubcap">
+			<material>Gazebo/Yellow</material>
+		</gazebo>
+
+		<gazebo reference="p3dx_${suffix}_wheel">
+			<material>Gazebo/Black</material>
+			<mu1>0.5</mu1>
+			<mu2>50.0</mu2>
+			<kp>100000000.0</kp>
+			<kd>1.0</kd>
+		</gazebo>
+
+
+
+    <transmission name="${parent}_${suffix}_wheel_trans">
+      <type>pr2_mechanism_model/SimpleTransmission</type>
+      <joint name="base_${suffix}_wheel_joint" />
+      <actuator name="base_${suffix}_wheel_motor">
+        <hardwareInterface>VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>${reflect * 624/35 * 80/19}</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+<axis xyz="0 1 0" />
+			<anchor xyz="0 0 0" />
+			<limit effort="100" velocity="100" />
+			<joint_properties damping="0.0" friction="0.0" />

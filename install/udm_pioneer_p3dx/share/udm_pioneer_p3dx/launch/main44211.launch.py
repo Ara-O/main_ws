@@ -32,6 +32,7 @@ def generate_launch_description():
             'gui': LaunchConfiguration('gui'),
             'headless': LaunchConfiguration('headless'),
             'debug': LaunchConfiguration('debug'),
+	    'verbose': 'true'
         }.items()
     )
 
