@@ -16,7 +16,8 @@ setup(
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
         (os.path.join('share', package_name, 'urdf'), glob('urdf/*')),
         (os.path.join('share', package_name, 'p3dx_description', 'meshes'), glob('p3dx_description/meshes/*')),
-        (os.path.join('share', package_name, 'p3dx_gazebo'), glob('p3dx_gazebo/*'))
+        (os.path.join('share', package_name, 'p3dx_gazebo'), glob('p3dx_gazebo/*')),
+        (os.path.join('share', package_name, 'p3dx_navigation'), glob('p3dx_navigation/*'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,

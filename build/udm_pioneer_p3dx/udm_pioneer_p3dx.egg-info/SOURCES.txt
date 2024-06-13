@@ -27,6 +27,7 @@ p3dx_description/meshes/top.dae
 p3dx_description/meshes/top.stl
 p3dx_gazebo/one_robot.launch.py
 p3dx_gazebo/robots44211.launch.py
+p3dx_navigation/mult_nav.launch.py
 resource/udm_pioneer_p3dx
 test/test_copyright.py
 test/test_flake8.py

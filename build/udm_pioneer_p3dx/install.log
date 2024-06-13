@@ -28,6 +28,7 @@
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes/chassis.stl
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/robots44211.launch.py
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/one_robot.launch.py
+/home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/mult_nav.launch.py
 /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info/dependency_links.txt
 /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info/entry_points.txt
 /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info/SOURCES.txt
