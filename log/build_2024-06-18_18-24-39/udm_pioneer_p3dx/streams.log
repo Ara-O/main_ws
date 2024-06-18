@@ -1,0 +1,16 @@
+[2.608s] Invoking command in '/home/ara/main_ws/src/udm_pioneer_p3dx': PYTHONPATH=/home/ara/main_ws/build/udm_pioneer_p3dx/prefix_override:/home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/udm_pioneer_p3dx build --build-base /home/ara/main_ws/build/udm_pioneer_p3dx/build install --record /home/ara/main_ws/build/udm_pioneer_p3dx/install.log --install-scripts $base/lib/udm_pioneer_p3dx --single-version-externally-managed install_data
+[3.623s] running egg_info
+[3.629s] writing ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/PKG-INFO
+[3.634s] writing dependency_links to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/dependency_links.txt
+[3.635s] writing entry points to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/entry_points.txt
+[3.636s] writing requirements to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/requires.txt
+[3.637s] writing top-level names to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/top_level.txt
+[3.787s] reading manifest file '../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/SOURCES.txt'
+[3.795s] writing manifest file '../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/SOURCES.txt'
+[3.797s] running build
+[3.797s] running build_py
+[3.802s] running install
+[3.812s] running install_lib
+[3.831s] running install_data
+[3.837s] error: can't copy 'p3dx_navigation/config': doesn't exist or not a regular file
+[3.898s] Invoked command in '/home/ara/main_ws/src/udm_pioneer_p3dx' returned '1': PYTHONPATH=/home/ara/main_ws/build/udm_pioneer_p3dx/prefix_override:/home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/udm_pioneer_p3dx build --build-base /home/ara/main_ws/build/udm_pioneer_p3dx/build install --record /home/ara/main_ws/build/udm_pioneer_p3dx/install.log --install-scripts $base/lib/udm_pioneer_p3dx --single-version-externally-managed install_data
