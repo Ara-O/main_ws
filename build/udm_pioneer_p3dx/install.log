@@ -26,8 +26,10 @@
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes/top.stl
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes/lms100.dae
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/move_base_robot3.launch.py
+/home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/move_base_robot2.launch.py
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/robots44211.launch.py
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/one_robot.launch.py
+/home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/move_base_robot1.launch.py
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/mult_nav.launch.py
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/config/costmap_common_params.yaml
 /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/config/local_costmap_params.yaml

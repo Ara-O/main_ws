@@ -1,0 +1,21 @@
+[1.339s] Invoking command in '/home/greenranger/main_ws/src/udm_pioneer_p3dx': PYTHONPATH=/home/greenranger/main_ws/build/udm_pioneer_p3dx/prefix_override:/home/greenranger/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/udm_pioneer_p3dx build --build-base /home/greenranger/main_ws/build/udm_pioneer_p3dx/build install --record /home/greenranger/main_ws/build/udm_pioneer_p3dx/install.log --install-scripts $base/lib/udm_pioneer_p3dx --single-version-externally-managed install_data
+[1.621s] running egg_info
+[1.621s] writing ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/PKG-INFO
+[1.624s] writing dependency_links to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/dependency_links.txt
+[1.624s] writing entry points to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/entry_points.txt
+[1.624s] writing requirements to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/requires.txt
+[1.624s] writing top-level names to ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/top_level.txt
+[1.666s] reading manifest file '../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/SOURCES.txt'
+[1.676s] writing manifest file '../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info/SOURCES.txt'
+[1.677s] running build
+[1.677s] running build_py
+[1.677s] running install
+[1.678s] running install_lib
+[1.679s] running install_data
+[1.680s] copying p3dx_gazebo/move_base_robot2.launch.py -> /home/greenranger/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo
+[1.682s] running install_egg_info
+[1.683s] removing '/home/greenranger/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info' (and everything under it)
+[1.684s] Copying ../../build/udm_pioneer_p3dx/udm_pioneer_p3dx.egg-info to /home/greenranger/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info
+[1.686s] running install_scripts
+[1.706s] writing list of installed files to '/home/greenranger/main_ws/build/udm_pioneer_p3dx/install.log'
+[1.768s] Invoked command in '/home/greenranger/main_ws/src/udm_pioneer_p3dx' returned '0': PYTHONPATH=/home/greenranger/main_ws/build/udm_pioneer_p3dx/prefix_override:/home/greenranger/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/udm_pioneer_p3dx build --build-base /home/greenranger/main_ws/build/udm_pioneer_p3dx/build install --record /home/greenranger/main_ws/build/udm_pioneer_p3dx/install.log --install-scripts $base/lib/udm_pioneer_p3dx --single-version-externally-managed install_data
