@@ -29,6 +29,10 @@ p3dx_gazebo/move_base_robot3.launch.py
 p3dx_gazebo/one_robot.launch.py
 p3dx_gazebo/robots44211.launch.py
 p3dx_navigation/mult_nav.launch.py
+p3dx_navigation/config/costmap_common_params.yaml
+p3dx_navigation/config/global_costmap_params.yaml
+p3dx_navigation/config/local_costmap_params.yaml
+p3dx_navigation/config/move_base_params.yaml
 resource/udm_pioneer_p3dx
 test/test_copyright.py
 test/test_flake8.py

@@ -9,7 +9,6 @@
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf/pioneer3dx.gazebo.xacro
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf/pioneer3dx_wheel.xacro
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf/materials.xacro
-/home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/urdf/Untitled Document 1
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes/back_sonar.stl
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes/front_sonar.stl
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_description/meshes/top.stl
@@ -29,6 +28,10 @@
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/robots44211.launch.py
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_gazebo/one_robot.launch.py
 /home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/mult_nav.launch.py
+/home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/config/costmap_common_params.yaml
+/home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/config/local_costmap_params.yaml
+/home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/config/move_base_params.yaml
+/home/ara/main_ws/install/udm_pioneer_p3dx/share/udm_pioneer_p3dx/p3dx_navigation/config/global_costmap_params.yaml
 /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info/dependency_links.txt
 /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info/entry_points.txt
 /home/ara/main_ws/install/udm_pioneer_p3dx/lib/python3.8/site-packages/udm_pioneer_p3dx-0.0.0-py3.8.egg-info/SOURCES.txt
