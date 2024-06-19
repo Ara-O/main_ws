@@ -8,8 +8,8 @@ def generate_launch_description():
 
     gazebo_ros_pkg = get_package_share_directory('udm_pioneer_p3dx')
 
-    movebase_robot1 = os.path.join(gazebo_ros_pkg, 'p3dx_gazebo', 'launch', 'move_base_robot1.launch.py')
-    movebase_robot2 = os.path.join(gazebo_ros_pkg, 'p3dx_gazebo', 'launch', 'move_base_robot2.launch.py')
+    movebase_robot1 = os.path.join(gazebo_ros_pkg, 'p3dx_gazebo', 'move_base_robot1.launch.py')
+    movebase_robot2 = os.path.join(gazebo_ros_pkg, 'p3dx_gazebo','move_base_robot2.launch.py')
 
     return LaunchDescription([
         IncludeLaunchDescription(
