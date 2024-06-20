@@ -1,0 +1,112 @@
+# p3dx_navigation/config/nav2_params.yaml
+
+# Controller settings
+controller_server:
+  ros__parameters:
+    use_sim_true: True
+    controller_frequency: 10.0  # The rate in Hz at which to run the control loop and send velocity commands to the base
+
+# Planner settings
+planner_server:
+  ros__parameters:
+    TrajectoryPlannerROS:
+      pdist_scale: 0.9  # The weighting for how much the controller should stay close to the path it was given 
+      max_vel_x: 0.2  # The maximum forward velocity allowed for the base in meters/sec
+      min_vel_x: 0.05  # The minimum forward velocity allowed for the base in meters/sec
+      max_vel_theta: 0.8  # The maximum rotational velocity allowed for the base in radians/sec
+      min_vel_theta: -0.8  # The minimum rotational velocity allowed for the base in radians/sec
+      min_in_place_vel_theta: 0.01  # The minimum rotational velocity allowed for the base while performing in-place rotations in radians/sec
+      acc_lim_theta: 2.0  # The rotational acceleration limit of the robot in radians/sec^2
+      acc_lim_x: 2.0  # The x acceleration limit of the robot in meters/sec^2
+      meter_scoring: true  # Whether the gdist_scale and pdist_scale parameters should assume that goal_distance and path_distance are expressed in units of meters or cells.
+      holonomic_robot: false
+
+# Local Costmap settings
+local_costmap:
+  local_costmap:
+    ros__parameters:
+      max_obstacle_height: 0.60  # assume something like an arm is mounted on top of the robot
+      robot_radius: 0.20  # distance a circular robot should be clear of the obstacle (kobuki: 0.18)
+      footprint: "[ [-0.23,-0.23],[-0.23,0.23], [0.23, 0.23], [0.23,-0.23]]"
+      map_type: voxel
+      plugins: ["obstacle_layer", "inflation_layer", "static_layer"]
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: true
+        max_obstacle_height: 2
+        origin_z: 0
+        z_resolution: 0.2
+        unknown_threshold: 15
+        mark_threshold: 0
+        combination_method: 1
+        track_unknown_space: true
+        obstacle_range: 2.5
+        raytrace_range: 3.0
+        z_voxels: 5
+        publish_voxel_map: false
+        observation_sources:
+          scan:
+            data_type: LaserScan
+            topic: scan
+            marking: true
+            clearing: true
+            min_obstacle_height: 0
+            max_obstacle_height: 2
+
+  local_costmap.inflation_layer:
+    ros__parameters:
+      plugin: "nav2_costmap_2d::InflationLayer"
+      enabled: true
+      cost_scaling_factor: 5.0  # exponential rate at which the obstacle cost drops off (default: 10)
+      inflation_radius: 0.2  # max. distance from an obstacle at which costs are incurred for planning paths
+
+  local_costmap.static_layer:
+    ros__parameters:
+      plugin: "nav2_costmap_2d::StaticLayer"
+      enabled: true
+
+# Global Costmap settings
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      max_obstacle_height: 0.60
+      robot_radius: 0.20
+      footprint: "[ [-0.23,-0.23],[-0.23,0.23], [0.23, 0.23], [0.23,-0.23] ]"
+      map_type: voxel
+      plugins: ["obstacle_layer", "inflation_layer", "static_layer"]
+
+  global_costmap.obstacle_layer:
+    ros__parameters:
+      plugin: "nav2_costmap_2d::ObstacleLayer"
+      enabled: true
+      max_obstacle_height: 2
+      origin_z: 0
+      z_resolution: 0.2
+      unknown_threshold: 15
+      mark_threshold: 0
+      combination_method: 1
+      track_unknown_space: true
+      obstacle_range: 2.5
+      raytrace_range: 3.0
+      z_voxels: 5
+      publish_voxel_map: false
+      observation_sources:
+        scan:
+          data_type: LaserScan
+          topic: scan
+          marking: true
+          clearing: true
+          min_obstacle_height: 0
+          max_obstacle_height: 2
+
+  global_costmap.inflation_layer:
+    ros__parameters:
+      plugin: "nav2_costmap_2d::InflationLayer"
+      enabled: true
+      cost_scaling_factor: 5.0  # exponential rate at which the obstacle cost drops off (default: 10)
+      inflation_radius: 0.2  # max. distance from an obstacle at which costs are incurred for planning paths
+
+  global_costmap.static_layer:
+    ros__parameters:
+      plugin: "nav2_costmap_2d::StaticLayer"
+      enabled: true
