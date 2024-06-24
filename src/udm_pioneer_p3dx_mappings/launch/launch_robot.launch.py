@@ -21,10 +21,18 @@ def generate_launch_description():
         parameters=[params]
     )
 
+    node_robot_joint_publisher =  Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher',
+        parameters=[{'use_gui': False}]
+    )
+
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_sim_time',
             default_value='true'
         ),
-        node_robot_state_publisher
+        node_robot_state_publisher,
+        node_robot_joint_publisher
     ])
