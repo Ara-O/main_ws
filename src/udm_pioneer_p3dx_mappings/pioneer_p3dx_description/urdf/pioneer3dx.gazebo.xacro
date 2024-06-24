@@ -40,9 +40,10 @@
 	</gazebo>
   
   <!-- front_sonar -->  
-  <gazebo reference="front_sonar">
-    <material value="Gazebo/Yellow" />
-  </gazebo>
+
+   <gazebo reference="front_sonar">
+   	<material>Gazebo/Yellow</material>
+   </gazebo>
 
   <!-- differential drive -->
 	<gazebo>
