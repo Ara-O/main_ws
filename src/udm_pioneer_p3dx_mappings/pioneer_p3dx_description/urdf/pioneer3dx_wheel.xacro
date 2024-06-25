@@ -27,7 +27,7 @@
 					iyz="0" izz="0.011763977943" />
 			</inertial>
 
-			<visual name="base_visual">
+			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry name="pioneer_geom">
 					<mesh filename="package://udm_pioneer_p3dx_mappings/pioneer_p3dx_description/meshes/${suffix}_wheel.stl" />
@@ -60,13 +60,13 @@
 					iyz="0" izz="0.011763977943" />
 			</inertial>
 
-			<visual name="p3dx_${suffix}_hubcap">
+			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
-				<geometry>
+				<geometry name="${suffix}_hubcap">
 					<mesh filename="package://udm_pioneer_p3dx_mappings/pioneer_p3dx_description/meshes/${suffix}_hubcap.stl" />
 				</geometry>
 
-				<material>
+				<material name="Test">
 					<color rgba="1.0 0.811 0.151 1.0" />
 				</material>
 			</visual>
