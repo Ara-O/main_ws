@@ -13,6 +13,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))),
+        (os.path.join('share', package_name, 'maps'), glob(os.path.join('maps', '*'))),
         (os.path.join('share', package_name, 'pioneer_p3dx_description', 'meshes'), glob(os.path.join('pioneer_p3dx_description', 'meshes', '*'))),
         (os.path.join('share', package_name, 'pioneer_p3dx_description', 'urdf'), glob(os.path.join('pioneer_p3dx_description', 'urdf', '*'))),
         (os.path.join('share', package_name, 'pioneer_p3dx_description', 'config'), glob(os.path.join('pioneer_p3dx_description', 'config', '*')))

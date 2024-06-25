@@ -62,7 +62,7 @@
 			<robot_base_frame>base_link</robot_base_frame>
 			<publish_wheel_tf>false</publish_wheel_tf>
 			<publish_wheel_joint_state>false</publish_wheel_joint_state>
-			<ros_debug_level>na</ros_debug_level>
+			<ros_debug_level>Debug</ros_debug_level>
 			<wheel_acceleration>0</wheel_acceleration>
 			<wheel_torque>5</wheel_torque>
 			<odometry_source>1</odometry_source>

@@ -8,9 +8,20 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 import xacro
 
 def generate_launch_description():
-    # DeclareLaunchArgument("world_file", default_value='package://udm_pioneer_p3dx_mappings/maps/empty_world')
+    sim_time_arg = DeclareLaunchArgument(
+            'use_sim_time',
+            default_value='true'
+    ),
 
     use_sim_time = LaunchConfiguration('use_sim_time')
+
+    # Allow the user to pass in any world file they would like to spawn the robot in
+    world_file_arg = DeclareLaunchArgument(
+        'world_file',
+        default_value='test'
+    )
+    
+    world_file = LaunchConfiguration('world_file')
     
     #Gets the robot xacro file
     robot_xacro_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'pioneer_p3dx_description', 'urdf', 'pioneer3dx.xacro')
@@ -41,7 +52,7 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
         launch_arguments={
-            # 'world': world_file,
+            'world': world_file,
 	        'verbose': 'true'
         }.items()
     )
@@ -62,10 +73,8 @@ def generate_launch_description():
 
     # Return the launch description
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value='true'
-        ),
+        sim_time_arg,
+        world_file_arg,
         node_robot_state_publisher,
         node_robot_joint_publisher,
         gazebo,
