@@ -11,14 +11,14 @@ def generate_launch_description():
     sim_time_arg = DeclareLaunchArgument(
             'use_sim_time',
             default_value='true'
-    ),
+    )
 
     use_sim_time = LaunchConfiguration('use_sim_time')
 
     # Allow the user to pass in any world file they would like to spawn the robot in
     world_file_arg = DeclareLaunchArgument(
         'world_file',
-        default_value='test'
+        default_value=os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'maps', 'default_map.world')
     )
     
     world_file = LaunchConfiguration('world_file')
