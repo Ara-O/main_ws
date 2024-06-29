@@ -13,7 +13,6 @@ def generate_launch_description():
     # movebase_robot2 = os.path.join(gazebo_ros_pkg, 'p3dx_gazebo','move_base_robot2.launch.py')
 
     return LaunchDescription([
-
         Node(
             package='rviz2',
             executable='rviz2',
