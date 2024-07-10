@@ -27,14 +27,16 @@ def spawn_robot(context, *args, **kwargs):
             '-y', y,
             '-z', z,
             '-robot_namespace', LaunchConfiguration('robot_name')
-        ]
+        ],
+        parameters=[{'use_sim_time': True}]
     )
 
     joint_state_publisher = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
-        parameters=[{'use_gui': False}]
+        output='screen',
+        parameters=[{'use_gui': False, 'use_sim_time': True}]
     )
 
     robot_state_publisher = Node(
@@ -42,7 +44,7 @@ def spawn_robot(context, *args, **kwargs):
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
+        parameters=[{'use_sim_time': True, 'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
     )
 
     return [urdf_spawner, joint_state_publisher, robot_state_publisher]

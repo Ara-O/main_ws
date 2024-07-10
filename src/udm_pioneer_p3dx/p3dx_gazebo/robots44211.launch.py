@@ -12,6 +12,7 @@ def generate_launch_description():
 
     # Function to create a robot group
     def create_robot_group(robot_name, tf_prefix, init_pose):
+        # nav_launch_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'launch', f'nav2_{robot_name}.launch.py')
         return GroupAction(
             actions=[
                 PushRosNamespace(robot_name),
@@ -22,7 +23,10 @@ def generate_launch_description():
                         'init_pose': init_pose,
                         'robot_name': robot_name
                     }.items()
-                )
+                ),
+                # IncludeLaunchDescription(
+                #     PythonLaunchDescriptionSource([nav_launch_file])
+                # )
             ]
         )
 
