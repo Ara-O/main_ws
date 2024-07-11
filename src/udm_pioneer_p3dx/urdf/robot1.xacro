@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+
+<!-- 
+This is the xacro description of a Pioneer 3DX, to be used in rviz and gazebo.
+Copyright (C) 2013 Rafael Berkvens rafael.berkvens@uantwerpen.be
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+This project is based on work by Tracy Davies, where it was in turn based on
+work original in ucs-ros-pkg.
+ -->
+
+<robot name="pioneer3dx" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find udm_pioneer_p3dx)/urdf/pioneer3dx_wheel.xacro"/>
+
+
+  <!-- ground truth -->
+	<gazebo>
+		<plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+			<always_on>true</always_on>
+			<update_rate>100.0</update_rate>
+			<body_name>robot1/base_footprint</body_name>
+			<topic_name>robot1/base_pose_ground_truth</topic_name>
+			<gaussian_noise>0.01</gaussian_noise>
+			<frame_name>map</frame_name>
+			<!-- initialize odometry for fake localization -->
+			<xyz_offset>0 0 0</xyz_offset>
+			<rpy_offset>0 0 0</rpy_offset>
+		</plugin>
+	</gazebo>	
+	
+
+    <gazebo reference="base_link">
+   	<material>Gazebo/RedBright</material>
+   </gazebo>
+
+   <!-- Base footprint -->
+   <link name="base_footprint"/>
+
+	<joint name="base_joint" type="fixed">
+    	<parent link="base_footprint"/>
+    	<child link="base_link" />
+    	<origin xyz="0.0 0.0 0.1" rpy="0 0 0"/>
+  	</joint>
+
+
+
+  <!-- chassis -->
+  <!-- <link name="dummy_link"> -->
+  <!-- </link> -->
+	<link name="base_link">
+		<inertial>
+			<mass value="3.5" />
+			<!--<origin xyz="-0.025 0 -0.223"/> -->
+			<origin xyz="-0.05 0 0" />
+			<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+		</inertial>
+
+		<visual>
+			<origin xyz="-0.045 0 0.148" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/chassis.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="-0.045 0 0.145" rpy="0 0 0" />
+			<geometry>
+				<box size="0.35 0.25 0.14" />
+			</geometry>
+		</collision>
+	</link>
+
+    <!-- <joint name="base_link_joint" type="fixed"> -->
+       <!-- <parent link="dummy_link"/>  -->
+       <!-- <child link="base_link"/>  -->
+     <!-- </joint>  -->
+
+ <gazebo reference="top_plate">
+   	<material>Gazebo/Black</material>
+   </gazebo>
+  <!-- top_plate -->
+	<link name="top_plate">
+		<inertial>
+			<mass value="0.01" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+		</inertial>
+		
+		<visual>
+			<material name="green_color" />
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				 <mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/top.stl" />
+			</geometry>
+
+		</visual>
+
+		<collision name="top_plate_collision">
+			<origin xyz="0.0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.45 0.38 0.01" />
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_top_joint" type="fixed">
+		<origin xyz="-0.045 0 0.234" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="top_plate" />
+	</joint>
+
+ <gazebo reference="swivel">
+   	<material>Gazebo/DarkGrey</material>
+   </gazebo>
+   
+  <!-- swivel -->
+	<link name="swivel">
+		<inertial>
+			<mass value="0.1" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/swivel.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+			<geometry>
+				<box size="0 0 0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="base_swivel_joint" type="continuous">
+		<origin xyz="-0.185 0 0.055" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+		<anchor xyz="0 0 0" />
+		<limit effort="100" velocity="100" k_velocity="0" />
+		<joint_properties damping="0.0" friction="0.0" />
+		<parent link="base_link" />
+		<child link="swivel" />
+	</joint>
+	
+	 <gazebo reference="center_hubcap">
+   	<material>Gazebo/Grey</material>
+   </gazebo>
+
+  <!-- center_hubcap -->
+	<link name="center_hubcap">
+		<inertial>
+			<mass value="0.01" />
+			<origin xyz="0.0 0.0 0.0" />
+			<inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+				iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
+		</inertial>
+
+		<visual>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/center_hubcap.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+			<geometry>
+				<box size="0 0 0" />
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="swivel_hubcap_joint" type="continuous">
+		<axis xyz="0 1 0" />
+		<anchor xyz="0 0 0" />
+		<limit effort="100" velocity="100" k_velocity="0" />
+		<joint_properties damping="0.0" friction="0.0" />
+		<origin xyz="-0.026 0 -0.016" rpy="0 0 0" />
+		<parent link="swivel" />
+		<child link="center_wheel" />
+	</joint>
+	
+	<gazebo reference="center_wheel">
+   		<material>Gazebo/Black</material>
+   </gazebo>
+
+  <!-- center_wheel -->
+	<link name="center_wheel">
+		<inertial>
+			<mass value="0.1" />
+			<origin xyz="0.0 0.0 0.0" />
+			<inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+				iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
+		</inertial>
+
+		<visual>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/center_wheel.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+		    <origin xyz="0 0 0" rpy="-1.57079635 0 0"/>
+		    <geometry>
+				<cylinder radius="0.0375" length="0.01" />
+		    </geometry>
+		</collision>
+	</link>
+
+	<joint name="center_wheel_joint" type="fixed">
+		<origin xyz="-0.0035 0.0 -0.001" rpy="0.0 0.0 0.0"/>
+		<parent link="center_wheel"/>
+		<child link="center_hubcap"/>
+	</joint>
+
+ <gazebo reference="front_sonar">
+   	<material>Gazebo/Yellow</material>
+   </gazebo>
+  <!-- front_sonar -->
+	<link name="front_sonar">
+		<inertial>
+			<mass value="0.0001" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+		</inertial>
+		
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/front_sonar.stl" />
+			</geometry>
+		</visual>
+		
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<box size="0 0 0" />
+			</geometry>
+		</collision>
+	</link>
+	
+	<joint name="base_front_joint" type="fixed">
+		<origin rpy="0 0 0" xyz="0.109 0 0.209" />
+		<parent link="base_link" />
+		<child link="front_sonar" />
+	</joint>
+	
+	<!-- lms100 laser -->
+	<link name="lms100">
+		<inertial>
+			<mass value="1e-5" />
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/lms100.dae" />     
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.1 0.1 0.1" />
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="lms100">
+		<sensor type="ray" name="head_hokuyo_sensor">
+			<pose>0 0 0 0 0 0</pose>
+			<visualize>true</visualize>
+			<update_rate>50</update_rate>
+			<ray>
+				<scan>
+					<horizontal>
+						<samples>360</samples>
+						<resolution>1</resolution>
+						<min_angle>-1.570796</min_angle>
+						<max_angle>1.570796</max_angle>
+					</horizontal>
+				</scan>
+				<range>
+					<min>0.10</min>
+					<max>30.0</max>
+					<resolution>0.01</resolution>
+				</range>
+				<noise>
+					<type>gaussian</type>
+					<mean>0.0</mean>
+					<stddev>0.01</stddev>
+				</noise>
+			</ray>
+			<plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_ray_sensor.so">
+				<ros>
+					<namespace>robot1</namespace>
+					<remapping>~/out:=scan</remapping>
+				</ros>
+				<output_type>sensor_msgs/LaserScan</output_type>
+				<topic_name>sensor_msgs/LaserScan</topic_name>
+				<frame_name>robot1/lms100</frame_name>
+			</plugin>
+		</sensor>
+	</gazebo>
+
+	<joint name="lms100_joint" type="fixed">
+		<axis xyz="0 1 0" />
+		<origin xyz="0.16 0 0.15" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="lms100" />
+	</joint>
+
+	
+    <gazebo reference="p3dx_left_wheel">
+ 	  	<material>Gazebo/Black</material>
+		<mu1>0.5</mu1>
+		<mu2>50.0</mu2>
+		<kp>100000000.0</kp>
+		<kd>1.0</kd>
+   </gazebo>
+   
+      <gazebo reference="p3dx_left_hubcap">
+   	<material>Gazebo/Yellow</material>
+   </gazebo>
+	
+	
+	<!-- LEFT WHEEL -->
+		<!-- wheel -->
+	<link name="p3dx_left_wheel">
+		<inertial>
+			<mass value="0.5" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/left_wheel.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="-1.57079635 0 0" />
+			<geometry>
+				<cylinder radius="0.09" length="0.01" />
+			</geometry>
+		</collision>
+	</link>
+
+		
+	<joint name="base_left_wheel_joint" type="continuous">
+		<axis xyz="0 1 0" />
+		<anchor xyz="0 0 0" />
+		<limit effort="100" velocity="100" />
+		<joint_properties damping="0.0" friction="0.0" />
+		<origin xyz="0 0.158 0.091" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="p3dx_left_wheel" />
+	</joint>
+		
+		
+	<link name="p3dx_left_hubcap">
+		<inertial>
+			<mass value="0.01" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/left_hubcap.stl" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0 0 0" />
+			</geometry>
+		</collision> 
+	</link>
+
+	
+	<joint name="base_left_hubcap_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="p3dx_left_wheel" />
+		<child link="p3dx_left_hubcap" />
+	</joint>
+	
+	
+    <transmission name="base_link_left_wheel_trans">
+      <type>pr2_mechanism_model/SimpleTransmission</type>
+      <joint name="base_left_wheel_joint" />
+      <actuator name="base_left_wheel_motor">
+        <hardware_interface>VelocityJointInterface</hardware_interface>
+        <mechanical_reduction>${624/35 * 80/19}</mechanical_reduction>
+      </actuator>
+    </transmission>
+    
+
+	
+     <gazebo reference="p3dx_right_wheel">
+   	<material>Gazebo/Black</material>
+	<mu1>0.5</mu1>
+			<mu2>50.0</mu2>
+			<kp>100000000.0</kp>
+			<kd>1.0</kd>
+   </gazebo>
+   
+      <gazebo reference="p3dx_right_hubcap">
+   	<material>Gazebo/Yellow</material>
+   </gazebo>
+	
+	
+	<!-- RIGHT WHEEL -->
+	<link name="p3dx_right_wheel">
+		<inertial>
+			<mass value="0.5" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/right_wheel.stl" />
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="-1.57079635 0 0" />
+			<geometry>
+				<cylinder radius="0.09" length="0.01" />
+			</geometry>
+		</collision>
+	</link>
+
+		
+	<joint name="base_right_wheel_joint" type="continuous">
+		<axis xyz="0 1 0" />
+		<anchor xyz="0 0 0" />
+		<limit effort="100" velocity="100" />
+		<joint_properties damping="0.0" friction="0.0" />
+		<origin xyz="0 -0.158 0.091" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="p3dx_right_wheel" />
+	</joint>
+		
+		
+	<link name="p3dx_right_hubcap">
+		<inertial>
+			<mass value="0.01" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.012411765597" ixy="0" ixz="0" iyy="0.015218160428"
+				iyz="0" izz="0.011763977943" />
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://udm_pioneer_p3dx/p3dx_description/meshes/right_hubcap.stl" />
+			</geometry>
+		</visual>
+	
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0 0 0" />
+			</geometry>
+		</collision> 
+	
+	</link>
+
+	
+	<joint name="base_right_hubcap_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="p3dx_right_wheel" />
+		<child link="p3dx_right_hubcap" />
+	</joint>
+	
+	
+    <transmission name="base_link_right_wheel_trans">
+      <type>pr2_mechanism_model/SimpleTransmission</type>
+      <joint name="base_right_wheel_joint" />
+      <actuator name="base_right_wheel_motor">
+        <hardware_interface>VelocityJointInterface</hardware_interface>
+        <mechanical_reduction>${-624/35 * 80/19}</mechanical_reduction>
+      </actuator>
+    </transmission>
+    
+    
+  <!-- differential drive -->
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+        <ros>
+			<namespace>robot1</namespace>
+		</ros>
+		<always_on>true</always_on>
+        <update_rate>40</update_rate>
+        <legacy_mode>false</legacy_mode>
+        <left_joint>base_right_wheel_joint</left_joint>
+        <right_joint>base_left_wheel_joint</right_joint>
+        <wheel_separation>0.39</wheel_separation>
+        <wheel_diameter>0.15</wheel_diameter>
+        <torque>5</torque>
+        <command_topic>cmd_vel</command_topic>
+        <odometry_topic>odom</odometry_topic>
+        <odometry_frame>robot1/odom</odometry_frame>
+        <robot_base_frame>robot1/base_footprint</robot_base_frame>
+        <publish_wheel_tf>false</publish_wheel_tf>
+        <publish_wheel_joint_state>false</publish_wheel_joint_state>
+        <ros_debug_level>na</ros_debug_level>
+        <wheel_acceleration>0</wheel_acceleration>
+        <wheel_torque>5</wheel_torque>
+        <odometry_source>1</odometry_source>
+		<publish_odom>true</publish_odom>
+		<publish_odom_tf>true</publish_odom_tf>
+    </plugin>
+</gazebo>
+
+</robot>
+

@@ -15,18 +15,15 @@ def generate_launch_description():
         # nav_launch_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'launch', f'nav2_{robot_name}.launch.py')
         return GroupAction(
             actions=[
-                PushRosNamespace(robot_name),
-                SetParameter('tf_prefix', tf_prefix),
+                # PushRosNamespace(robot_name),
                 IncludeLaunchDescription(
                     PythonLaunchDescriptionSource([one_robot_launch_file]),
                     launch_arguments={
                         'init_pose': init_pose,
-                        'robot_name': robot_name
+                        'robot_name': robot_name,
+                        'model': os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'urdf', robot_name+'.xacro') 
                     }.items()
                 ),
-                # IncludeLaunchDescription(
-                #     PythonLaunchDescriptionSource([nav_launch_file])
-                # )
             ]
         )
 

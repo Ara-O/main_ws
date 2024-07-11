@@ -8,7 +8,8 @@ from ament_index_python.packages import get_package_share_directory
 def spawn_robot(context, *args, **kwargs):
     # Get the initialization pose
     init_pose = LaunchConfiguration('init_pose').perform(context).split()
-    
+    robot_name = LaunchConfiguration('robot_name').perform(context)
+
     # Extract x, y, z values
     x = init_pose[1]
     y = init_pose[3]
@@ -20,6 +21,7 @@ def spawn_robot(context, *args, **kwargs):
         executable='spawn_entity.py',
         name='urdf_spawner',
         output='screen',
+        namespace=robot_name,
         arguments=[
             '-entity', LaunchConfiguration('robot_name'),
             '-file', LaunchConfiguration('model'),
@@ -35,21 +37,19 @@ def spawn_robot(context, *args, **kwargs):
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
+        namespace=robot_name,
         output='screen',
         parameters=[{'use_gui': False, 'use_sim_time': True}]
     )
-
-    t =  LaunchConfiguration('robot_name').perform(context) + '/'
-    # r = '/'+ LaunchConfiguration('robot_name').perform(context) + '/tf_static'
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        # remappings=[('/tf', t), ('/tf_static', r)],
+        namespace=robot_name,
         parameters=[{'use_sim_time': True, 
-                     'frame_prefix': t,  
+                     'frame_prefix': robot_name + "/",  
                      'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
     )
 
