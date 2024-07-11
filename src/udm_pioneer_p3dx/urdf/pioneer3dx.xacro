@@ -529,7 +529,6 @@ work original in ucs-ros-pkg.
         <wheel_torque>5</wheel_torque>
         <odometry_source>1</odometry_source>
         <publish_tf>1</publish_tf>
-		<publish_tf>1</publish_tf>
 		<publish_odom>true</publish_odom>
 		<publish_odom_tf>true</publish_odom_tf>
     </plugin>

@@ -39,12 +39,18 @@ def spawn_robot(context, *args, **kwargs):
         parameters=[{'use_gui': False, 'use_sim_time': True}]
     )
 
+    t =  LaunchConfiguration('robot_name').perform(context) + '/'
+    # r = '/'+ LaunchConfiguration('robot_name').perform(context) + '/tf_static'
+
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[{'use_sim_time': True, 'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
+        # remappings=[('/tf', t), ('/tf_static', r)],
+        parameters=[{'use_sim_time': True, 
+                     'frame_prefix': t,  
+                     'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
     )
 
     return [urdf_spawner, joint_state_publisher, robot_state_publisher]

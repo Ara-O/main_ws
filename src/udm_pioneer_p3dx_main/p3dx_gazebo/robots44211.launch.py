@@ -15,7 +15,7 @@ def generate_launch_description():
         return GroupAction(
             actions=[
                 PushRosNamespace(robot_name),
-                SetParameter('tf_prefix', tf_prefix),
+                # SetParameter('frame_prefix', tf_prefix),
                 IncludeLaunchDescription(
                     PythonLaunchDescriptionSource([one_robot_launch_file]),
                     launch_arguments={
