@@ -16,7 +16,7 @@ def generate_launch_description():
     ]
 
     # Path to your custom empty world file
-    world_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'worlds', 'feb2_scenario.world')
+    world_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'group3_world_1.world')
 
     # Path to the gazebo_ros launch file
     gazebo_ros_pkg = get_package_share_directory('gazebo_ros')
