@@ -32,28 +32,6 @@ def generate_launch_description():
             parameters=[amcl_config_robot1]
         ),
 
-        # Node(
-        #     namespace="robot1",
-        #     package="tb3_sim",
-        #     executable="amcl_init_pose_publisher",
-        #     name="amcl_init_pose_publisher",
-        #     parameters=[{
-        #         "x": -1.945,
-        #         "y": -0.50751,
-        #     }]
-        # ),
-
-        #  Node(
-        #     namespace="robot2",
-        #     package="tb3_sim",
-        #     executable="amcl_init_pose_publisher",
-        #     name="amcl_init_pose_publisher",
-        #     parameters=[{
-        #         "x": 1.7558,
-        #         "y": 1.6492,
-        #     }]
-        # ),
-
         Node(
             namespace="robot2",
             package='nav2_amcl',
