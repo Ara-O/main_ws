@@ -39,7 +39,7 @@ def spawn_robot(context, *args, **kwargs):
         name='joint_state_publisher',
         namespace=robot_name,
         output='screen',
-        parameters=[{'use_gui': False, 'use_sim_time': True}]
+        parameters=[{'use_gui': False, 'use_sim_time': True, 'frame_prefix': robot_name + "/"}]
     )
 
     robot_state_publisher = Node(
