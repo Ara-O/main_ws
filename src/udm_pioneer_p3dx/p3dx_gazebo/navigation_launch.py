@@ -23,8 +23,8 @@ def generate_launch_description():
 
     lifecycle_nodes = ['robot2/controller_server',
                        'robot2/planner_server',
-                    #    'robot2/recoveries_server',
-                    #    'robot2/bt_navigator',
+                       'robot2/recoveries_server',
+                       'robot2/bt_navigator',
                     #    'robot2/waypoint_follower'
                        ]
 
@@ -46,7 +46,8 @@ def generate_launch_description():
 
     controller_yaml = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'controller.yaml')
     planner_yaml = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'planner.yaml')
-
+    recoveries_yaml = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'recoveries.yaml')
+    bt_navigator_yaml = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'bt_navigator.yaml')
     return LaunchDescription([
         # Set env var to print messages to stdout immediately
         SetEnvironmentVariable('RCUTILS_LOGGING_BUFFERED_STREAM', '1'),
@@ -96,22 +97,23 @@ def generate_launch_description():
             output='screen',
             parameters=[planner_yaml, {'use_sim_time': True}]),
 
-#         Node(
-#             package='nav2_recoveries',
-#             executable='recoveries_server',
-#             name='recoveries_server',
-#             output='screen',
-#             namespace="robot2",
-#             parameters=[{'params_file': '/home/ara/main_ws/src/udm_pioneer_p3dx/p3dx_navigation/config/plswork.yaml', 'use_sim_time': True}],
-# ),
+        Node(
+            namespace="robot2",
+            package='nav2_recoveries',
+            executable='recoveries_server',
+            name='recoveries_server',
+            output='screen',
+            parameters=[recoveries_yaml, {'use_sim_time': True}],
+),
 
-#         Node(
-#             package='nav2_bt_navigator',
-#             executable='bt_navigator',
-#             name='bt_navigator',
-#             output='screen',
-#             parameters=[{'params_file': '/home/ara/main_ws/src/udm_pioneer_p3dx/p3dx_navigation/config/plswork.yaml', 'use_sim_time': True}],
-#         ),
+        Node(
+            namespace="robot2",
+            package='nav2_bt_navigator',
+            executable='bt_navigator',
+            name='bt_navigator',
+            output='screen',
+            parameters=[bt_navigator_yaml, {'use_sim_time': True}],
+        ),
 
 #         Node(
 #             package='nav2_waypoint_follower',
