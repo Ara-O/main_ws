@@ -1,11 +1,11 @@
 robot2/amcl:
   ros__parameters:
     use_sim_time: True
-    alpha1: 0.2
-    alpha2: 0.2
-    alpha3: 0.2
-    alpha4: 0.2
-    alpha5: 0.2
+    alpha1: 0.002
+    alpha2: 0.002
+    alpha3: 0.002
+    alpha4: 0.002
+    alpha5: 0.002
     base_frame_id: "robot2/base_footprint"
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
@@ -26,7 +26,7 @@ robot2/amcl:
     recovery_alpha_fast: 0.0
     recovery_alpha_slow: 0.0
     resample_interval: 1
-    robot_model_type: "nav2_amcl::DifferentialMotionModel"
+    robot_model_type: "differential"
     save_pose_rate: 0.5
     sigma_hit: 0.2
     tf_broadcast: true
@@ -43,6 +43,7 @@ robot2/amcl:
     initial_pose:
       x: 1.7558
       y: 1.6492
+      z: 0.0
 
 robot2/amcl_map_client:
   ros__parameters:

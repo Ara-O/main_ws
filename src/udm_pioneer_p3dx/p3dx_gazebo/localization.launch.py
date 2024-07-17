@@ -38,7 +38,9 @@ def generate_launch_description():
             executable='amcl',
             name='amcl',
             output='screen',
-            parameters=[amcl_config_robot2]
+            parameters=[amcl_config_robot2],
+                        # arguments=['--ros-args', '--log-level', 'debug']
+
         ),
 
 
