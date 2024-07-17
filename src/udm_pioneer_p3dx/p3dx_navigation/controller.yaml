@@ -85,7 +85,7 @@ robot2:
       ros__parameters:
         update_frequency: 5.0
         publish_frequency: 2.0
-        global_frame: robot2/odom
+        global_frame: map
         robot_base_frame: robot2/base_footprint
         use_sim_time: True
         rolling_window: true
