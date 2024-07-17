@@ -3,6 +3,7 @@ robot2:
     ros__parameters:
       expected_planner_frequency: 20.0
       use_sim_time: True
+      global_frame: "map"
       planner_plugins: ["GridBased"]
       GridBased:
         plugin: "nav2_navfn_planner/NavfnPlanner"
@@ -21,9 +22,12 @@ robot2:
       ros__parameters:
         update_frequency: 1.0
         publish_frequency: 1.0
+        map_topic: map
         global_frame: map
         robot_base_frame: robot2/base_footprint
         use_sim_time: True
+        height: 10
+        width: 18
         robot_radius: 0.75
         resolution: 0.05
         track_unknown_space: true
@@ -34,16 +38,14 @@ robot2:
           observation_sources: /robot2/scan
           scan:
             topic: /robot2/scan
-            max_obstacle_height: 2.0
+            max_obstacle_height: 4.0
             clearing: True
             marking: True
             data_type: "LaserScan"
-            raytrace_max_range: 3.0
-            raytrace_min_range: 0.0
-            obstacle_max_range: 2.5
-            obstacle_min_range: 0.0
         static_layer:
           plugin: "nav2_costmap_2d::StaticLayer"
+          subscribe_to_updates: True
+          map_topic: "/map"
           map_subscribe_transient_local: True
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"

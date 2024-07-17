@@ -95,7 +95,9 @@ def generate_launch_description():
             executable='planner_server',
             name='planner_server',
             output='screen',
-            parameters=[planner_yaml, {'use_sim_time': True}]),
+            parameters=[planner_yaml, {'use_sim_time': True}],
+            # arguments=['--ros-args', '--log-level', 'debug']
+            ),
 
         Node(
             namespace="robot2",
@@ -113,7 +115,6 @@ def generate_launch_description():
             name='bt_navigator',
             output='screen',
             parameters=[bt_navigator_yaml, {'use_sim_time': True}],
-            arguments=['--ros-args', '--log-level', 'debug']
         ),
 
 #         Node(
