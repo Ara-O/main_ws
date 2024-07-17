@@ -19,6 +19,7 @@ setup(
         (os.path.join('share', package_name, 'p3dx_gazebo'), glob('p3dx_gazebo/*')),
         (os.path.join('share', package_name, 'p3dx_navigation'), glob('p3dx_navigation/mult_nav.launch.py')),
         (os.path.join('share', package_name, 'p3dx_navigation'), glob('p3dx_navigation/*.yaml')),
+        (os.path.join('share', package_name, 'p3dx_navigation'), glob('p3dx_navigation/*.xml')),
         (os.path.join('share', package_name, 'p3dx_navigation', 'config'), glob('p3dx_navigation/config/*')),
         (os.path.join('share', package_name, 'p3dx_navigation', 'maps'), glob('p3dx_navigation/maps/*'))
     ],

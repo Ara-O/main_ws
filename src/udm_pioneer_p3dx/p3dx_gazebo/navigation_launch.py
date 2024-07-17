@@ -113,6 +113,7 @@ def generate_launch_description():
             name='bt_navigator',
             output='screen',
             parameters=[bt_navigator_yaml, {'use_sim_time': True}],
+            arguments=['--ros-args', '--log-level', 'debug']
         ),
 
 #         Node(
