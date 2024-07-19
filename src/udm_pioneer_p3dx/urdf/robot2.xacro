@@ -26,7 +26,7 @@ work original in ucs-ros-pkg.
 		<plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
 			<always_on>true</always_on>
 			<update_rate>100.0</update_rate>
-			<body_name>robot2/base_footprint</body_name>
+			<body_name>base_footprint</body_name>
 			<topic_name>robot2/base_pose_ground_truth</topic_name>
 			<gaussian_noise>0.01</gaussian_noise>
 			<frame_name>map</frame_name>
@@ -517,8 +517,8 @@ work original in ucs-ros-pkg.
 		<always_on>true</always_on>
         <update_rate>40</update_rate>
         <legacy_mode>false</legacy_mode>
-        <left_joint>base_right_wheel_joint</left_joint>
-        <right_joint>base_left_wheel_joint</right_joint>
+        <left_joint>base_left_wheel_joint</left_joint>
+        <right_joint>base_right_wheel_joint</right_joint>
         <wheel_separation>0.39</wheel_separation>
         <wheel_diameter>0.15</wheel_diameter>
         <torque>5</torque>
