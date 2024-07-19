@@ -11,10 +11,10 @@ robot2:
         plugin: "nav2_recoveries/BackUp"
       wait:
         plugin: "nav2_recoveries/Wait"
-      global_frame: map
+      global_frame: robot2/odom
       robot_base_frame: robot2/base_footprint
       transform_timeout: 0.1
-      use_sim_time: true
+      use_sim_time: True
       simulate_ahead_time: 2.0
       max_rotational_vel: 1.0
       min_rotational_vel: 0.4

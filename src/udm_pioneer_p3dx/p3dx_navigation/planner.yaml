@@ -9,7 +9,7 @@ robot2:
         plugin: "nav2_navfn_planner/NavfnPlanner"
         tolerance: 0.5
         use_astar: false
-        allow_unknown: true
+        allow_unknown: True
 
 robot2:
   planner_server_rclcpp_node:
@@ -26,16 +26,16 @@ robot2:
         global_frame: map
         robot_base_frame: robot2/base_footprint
         use_sim_time: True
-        height: 10
-        width: 18
+        # height: 10
+        # width: 18
         robot_radius: 0.75
         resolution: 0.05
-        track_unknown_space: true
+        track_unknown_space: True
         plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
         obstacle_layer:
           plugin: "nav2_costmap_2d::ObstacleLayer"
           enabled: True
-          observation_sources: /robot2/scan
+          observation_sources: scan
           scan:
             topic: /robot2/scan
             max_obstacle_height: 4.0
