@@ -21,28 +21,17 @@ def generate_launch_description():
     default_bt_xml_filename = LaunchConfiguration('default_bt_xml_filename')
     map_subscribe_transient_local = LaunchConfiguration('map_subscribe_transient_local')
 
-    lifecycle_nodes = ['robot2/controller_server',
+    lifecycle_nodes = [
+                        'robot2/controller_server',
                        'robot2/planner_server',
                        'robot2/recoveries_server',
                        'robot2/bt_navigator',
-                    #    'robot2/waypoint_follower'
+                        'robot1/controller_server',
+                       'robot1/planner_server',
+                       'robot1/recoveries_server',
+                       'robot1/bt_navigator',
                        ]
 
-    # remappings = [('/tf', 'tf'),
-    #               ('/tf_static', 'tf_static')]
-
-    # Create our own temporary YAML files that include substitutions
-    # param_substitutions = {
-    #     'use_sim_time': use_sim_time,
-    #     'default_bt_xml_filename': default_bt_xml_filename,
-    #     'autostart': autostart,
-    #     'map_subscribe_transient_local': map_subscribe_transient_local}
-
-    # configured_params = RewrittenYaml(
-    #         source_file=params_file,
-    #         root_key=namespace,
-    #         param_rewrites=param_substitutions,
-    #         convert_types=True)
 
     controller_yaml = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'controller.yaml')
     planner_yaml = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'planner.yaml')
@@ -117,13 +106,44 @@ def generate_launch_description():
             parameters=[bt_navigator_yaml, {'use_sim_time': True}],
         ),
 
-#         Node(
-#             package='nav2_waypoint_follower',
-#             executable='waypoint_follower',
-#             name='waypoint_follower',
-#             output='screen',
-#             parameters=[{'params_file': '/home/ara/main_ws/src/udm_pioneer_p3dx/p3dx_navigation/config/plswork.yaml', 'use_sim_time': True}],
-#            ),
+          Node(
+            namespace="robot1",
+            name="controller_server",
+            package='nav2_controller',
+            executable='controller_server',
+            output='screen',
+            parameters=[controller_yaml, {'use_sim_time': True}],
+        ),
+
+        Node(
+            namespace="robot1",
+            package='nav2_planner',
+            executable='planner_server',
+            name='planner_server',
+            output='screen',
+            parameters=[planner_yaml, {'use_sim_time': True}],
+            # arguments=['--ros-args', '--log-level', 'debug']
+            ),
+
+        Node(
+            namespace="robot1",
+            package='nav2_recoveries',
+            executable='recoveries_server',
+            name='recoveries_server',
+            output='screen',
+            parameters=[recoveries_yaml, {'use_sim_time': True}],
+),
+
+        Node(
+            namespace="robot1",
+            package='nav2_bt_navigator',
+            executable='bt_navigator',
+            name='bt_navigator',
+            output='screen',
+            parameters=[bt_navigator_yaml, {'use_sim_time': True}],
+        ),
+
+
 
         Node(
             package='nav2_lifecycle_manager',
