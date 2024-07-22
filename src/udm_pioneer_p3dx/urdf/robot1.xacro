@@ -19,22 +19,6 @@ work original in ucs-ros-pkg.
 <robot name="pioneer3dx" xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:include filename="$(find udm_pioneer_p3dx)/urdf/pioneer3dx_wheel.xacro"/>
-
-
-  <!-- ground truth -->
-	<gazebo>
-		<plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
-			<always_on>true</always_on>
-			<update_rate>100.0</update_rate>
-			<body_name>robot1/base_footprint</body_name>
-			<topic_name>robot1/base_pose_ground_truth</topic_name>
-			<gaussian_noise>0.01</gaussian_noise>
-			<frame_name>map</frame_name>
-			<!-- initialize odometry for fake localization -->
-			<xyz_offset>0 0 0</xyz_offset>
-			<rpy_offset>0 0 0</rpy_offset>
-		</plugin>
-	</gazebo>	
 	
 
     <gazebo reference="base_link">

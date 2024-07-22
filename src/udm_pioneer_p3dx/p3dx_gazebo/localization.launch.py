@@ -9,8 +9,9 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     amcl_config_robot1 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot1.yaml")
     amcl_config_robot2 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot2.yaml")
-    map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'group3_map_project_1.yaml')
+    map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'feb2_map.yaml')
 
+    # MAKE PARAMETER
     return LaunchDescription([
         Node(
             package='nav2_map_server',
