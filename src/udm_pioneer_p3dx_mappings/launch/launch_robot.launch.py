@@ -10,14 +10,16 @@ import xacro
 def generate_launch_description():
     sim_time_arg = DeclareLaunchArgument(
             'use_sim_time',
-            default_value='true'
+            default_value='true',
+            description="True if using simulation"
     )
 
     default_slam_config_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'config', 'mapper_params_online_async.yaml' )
 
     slam_arg = DeclareLaunchArgument(
             'slam_params_file',
-            default_value=default_slam_config_file
+            default_value=default_slam_config_file,
+            description="The config file that will be used when launching the slam toolbox"
     )
 
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -25,7 +27,8 @@ def generate_launch_description():
     # Allow the user to pass in any world file they would like to spawn the robot in
     world_file_arg = DeclareLaunchArgument(
         'world_file',
-        default_value=os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'maps', 'default_map.world')
+        default_value=os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'maps', 'default_map.world'),
+        description="The world file to map"
     )
     
     world_file = LaunchConfiguration('world_file')
