@@ -8,15 +8,11 @@
   <xacro:include filename="pioneer3dx_wheel.xacro" />
   <xacro:include filename="pioneer3dx_lidar.xacro" />
 
-<!-- base link-->
 
- <link name="base_link">
-
-    </link>
-
-
-  <!-- chassis -->
-	<link name="chassis">
+<link name="base_footprint">
+</link>
+  <!-- base link -->
+	<link name="base_link">
 		<inertial>
 			<mass value="3.5" />
 			<!--<origin xyz="-0.025 0 -0.223"/> -->
@@ -42,24 +38,17 @@
 		</collision>
 	</link>
 	
-	 
-    <joint name="chassis_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="chassis"/>
-        <origin xyz="-0.05 0 0" />
-    </joint>
+
 
 	   <!-- BASE_FOOTPRINT LINK -->
 
     <joint name="base_footprint_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="base_footprint"/>
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
+	
 
-	 <link name="base_footprint">
-    </link>
-	<!-- Just added base footprint-->
 
   <!-- top_plate -->
 	<link name="top_plate">
@@ -90,7 +79,7 @@
 
 	<joint name="base_top_joint" type="fixed">
 		<origin xyz="-0.045 0 0.234" rpy="0 0 0" />
-		<parent link="chassis" />
+		<parent link="base_link" />
 		<child link="top_plate" />
 	</joint>
 
@@ -126,7 +115,7 @@
 		<anchor xyz="0 0 0" />
 		<limit effort="100" velocity="100" k_velocity="0" />
 		<joint_properties damping="0.0" friction="0.0" />
-		<parent link="chassis" />
+		<parent link="base_link" />
 		<child link="swivel" />
 	</joint>
 
@@ -200,8 +189,8 @@
 		<child link="center_hubcap"/>
 	</joint>
 
-	<xacro:p3dx_wheel suffix="left" parent="chassis" reflect="1"/>
-	<xacro:p3dx_wheel suffix="right" parent="chassis" reflect="-1"/>
+	<xacro:p3dx_wheel suffix="left" parent="base_link" reflect="1"/>
+	<xacro:p3dx_wheel suffix="right" parent="base_link" reflect="-1"/>
 
   <!-- front_sonar -->
 	<link name="front_sonar">
@@ -231,7 +220,7 @@
 	
 	<joint name="base_front_joint" type="fixed">
 		<origin rpy="0 0 0" xyz="0.109 0 0.209" />
-		<parent link="chassis" />
+		<parent link="base_link" />
 		<child link="front_sonar" />
 	</joint>	
 </robot>
