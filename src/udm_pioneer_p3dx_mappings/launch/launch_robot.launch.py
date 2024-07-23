@@ -80,10 +80,13 @@ def generate_launch_description():
         parameters=[slam_params_file, use_sim_time]
     )
 
+    # Get rviz config
+    rviz_config_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'config', 'robot.rviz')
+
     rviz = Node(
         package='rviz2',
         executable='rviz2',
-        arguments=['-d', os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'pioneer_p3dx_description', 'config', 'robot.rviz')]
+        arguments=['-d', rviz_config_file]
     )
 
     # Return the launch description
