@@ -13,6 +13,13 @@ def generate_launch_description():
             default_value='true'
     )
 
+    default_slam_config_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx_mappings'), 'config', 'mapper_params_online_async.yaml' )
+
+    slam_arg = DeclareLaunchArgument(
+            'slam_params_file',
+            default_value=default_slam_config_file
+    )
+
     use_sim_time = LaunchConfiguration('use_sim_time')
 
     # Allow the user to pass in any world file they would like to spawn the robot in
@@ -45,10 +52,10 @@ def generate_launch_description():
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
-        parameters=[{'use_gui': False}]
+        parameters=[{'use_gui': False, 'use_sim_time': True}]
     )
 
-    #Include the gazebo launch file - TODO Make this take the world file as an argument
+    #Include the gazebo launch file 
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
         launch_arguments={
@@ -64,6 +71,15 @@ def generate_launch_description():
         output='screen'
     )
 
+    slam_params_file = LaunchConfiguration('slam_params_file')
+    # Set up slam
+    slam_node = Node(
+        package='slam_toolbox',
+        executable='async_slam_toolbox_node',
+        name='slam',
+        parameters=[slam_params_file, use_sim_time]
+    )
+
     rviz = Node(
         package='rviz2',
         executable='rviz2',
@@ -73,10 +89,12 @@ def generate_launch_description():
     # Return the launch description
     return LaunchDescription([
         sim_time_arg,
+        slam_arg,
         world_file_arg,
         node_robot_state_publisher,
         node_robot_joint_publisher,
         gazebo,
+        slam_node,
         rviz,
         spawn_entity,
     ])
