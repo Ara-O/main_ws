@@ -8,7 +8,10 @@
   <xacro:include filename="pioneer3dx_wheel.xacro" />
   <xacro:include filename="pioneer3dx_lidar.xacro" />
 
-  <!-- chassis -->
+
+<link name="base_footprint">
+</link>
+  <!-- base link -->
 	<link name="base_link">
 		<inertial>
 			<mass value="3.5" />
@@ -34,6 +37,18 @@
 			</geometry>
 		</collision>
 	</link>
+	
+
+
+	   <!-- BASE_FOOTPRINT LINK -->
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+	
+
 
   <!-- top_plate -->
 	<link name="top_plate">
