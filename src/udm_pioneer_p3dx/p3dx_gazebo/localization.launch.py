@@ -9,10 +9,14 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     amcl_config_robot1 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot1.yaml")
     amcl_config_robot2 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot2.yaml")
-    map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'feb2_map.yaml')
+    default_map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'feb2_world.yaml')
 
-    # MAKE PARAMETER
     return LaunchDescription([
+        DeclareLaunchArgument(
+            'map_file',
+            default_value=default_map_file,
+            description="The map that the robot will be localized in"
+        ),
         Node(
             package='nav2_map_server',
             executable='map_server',
@@ -21,7 +25,7 @@ def generate_launch_description():
             parameters=[{'use_sim_time': True},
                         {'topic_name':  'map'}, 
                         {'frame_id': 'map'},
-                        {'yaml_filename': map_file}]
+                        {'yaml_filename': LaunchConfiguration('map_file')}]
         ),
         
         Node(
