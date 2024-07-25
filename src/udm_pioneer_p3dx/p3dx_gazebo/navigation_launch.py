@@ -21,9 +21,9 @@ def generate_launch_description():
     default_bt_xml_filename = LaunchConfiguration('default_bt_xml_filename')
     map_subscribe_transient_local = LaunchConfiguration('map_subscribe_transient_local')
 
-    amcl_config_robot1 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot1.yaml")
-    amcl_config_robot2 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot2.yaml")
-    default_map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'feb2_world.yaml')
+    # amcl_config_robot1 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot1.yaml")
+    # amcl_config_robot2 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot2.yaml")
+    # default_map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'feb2_world.yaml')
 
 
     lifecycle_nodes = [
@@ -48,12 +48,6 @@ def generate_launch_description():
     return LaunchDescription([
         # Set env var to print messages to stdout immediately
         SetEnvironmentVariable('RCUTILS_LOGGING_BUFFERED_STREAM', '1'),
-        
-        DeclareLaunchArgument(
-            'map_file',
-            default_value=default_map_file,
-            description="The map that the robot will be localized in"
-        ),
 
         DeclareLaunchArgument(
             'namespace', default_value='robot2',
@@ -83,36 +77,35 @@ def generate_launch_description():
             'map_subscribe_transient_local', default_value='true',
             description='Whether to set the map subscriber QoS to transient local'),
         
-         Node(
-            package='nav2_map_server',
-            executable='map_server',
-            name='map_server',
-            output='screen',
-            parameters=[{'use_sim_time': True},
-                        {'topic_name':  'map'}, 
-                        {'frame_id': 'map'},
-                        {'yaml_filename': LaunchConfiguration('map_file')}]
-        ),
+        #  Node(
+        #     package='nav2_map_server',
+        #     executable='map_server',
+        #     name='map_server',
+        #     output='screen',
+        #     parameters=[{'use_sim_time': True},
+        #                 {'topic_name':  'map'}, 
+        #                 {'frame_id': 'map'},
+        #                 {'yaml_filename': LaunchConfiguration('map_file')}]
+        # ),
         
-        Node(
-            namespace="robot1",
-            package='nav2_amcl',
-            executable='amcl',
-            name='amcl',
-            output='screen',
-            parameters=[amcl_config_robot1]
-        ),
+        # Node(
+        #     namespace="robot1",
+        #     package='nav2_amcl',
+        #     executable='amcl',
+        #     name='amcl',
+        #     output='screen',
+        #     parameters=[amcl_config_robot1]
+        # ),
 
-        Node(
-            namespace="robot2",
-            package='nav2_amcl',
-            executable='amcl',
-            name='amcl',
-            output='screen',
-            parameters=[amcl_config_robot2],
-                        # arguments=['--ros-args', '--log-level', 'debug']
-
-        ),
+        # Node(
+        #     namespace="robot2",
+        #     package='nav2_amcl',
+        #     executable='amcl',
+        #     name='amcl',
+        #     output='screen',
+        #     parameters=[amcl_config_robot2],
+        #                 # arguments=['--ros-args', '--log-level', 'debug']
+        # ),
 
         Node(
             namespace="robot2",

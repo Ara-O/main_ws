@@ -9,6 +9,9 @@ def spawn_robot(context, *args, **kwargs):
     # Get the initialization pose
     init_pose = LaunchConfiguration('init_pose').perform(context).split()
     robot_name = LaunchConfiguration('robot_name').perform(context)
+    robot_index = LaunchConfiguration('robot_index').perform(context)
+
+    amcl_config_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot" + robot_index + ".yaml")
 
     # Extract x, y, z values
     x = init_pose[1]
@@ -53,15 +56,28 @@ def spawn_robot(context, *args, **kwargs):
                      'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
     )
 
+    amcl_node = Node(
+            namespace=robot_name,
+            package='nav2_amcl',
+            executable='amcl',
+            name='amcl',
+            output='screen',
+            parameters=[amcl_config_file,
+              {'initial_pose_x': x},
+              {'initial_pose_y': y},
+            ]
+    ),
+
+
     return [urdf_spawner, joint_state_publisher, robot_state_publisher]
 
 def generate_launch_description():
     # Declare launch arguments
     declared_arguments = [
         DeclareLaunchArgument('robot_name', description='Name of the robot'),
+        DeclareLaunchArgument('robot_index', description='Index of the robot'),
         DeclareLaunchArgument('init_pose', description='Initial pose of the robot'),
-        DeclareLaunchArgument('model', default_value=os.path.join(
-            get_package_share_directory('udm_pioneer_p3dx'), 'urdf', 'pioneer3dx.xacro'), description='URDF model file')
+        DeclareLaunchArgument('model', description='URDF model file')
     ]
 
     # Create the launch description and populate

@@ -40,10 +40,6 @@ robot2/amcl:
     scan_topic: "/robot2/scan"
     map_topic: "/map"
     set_initial_pose: True
-    initial_pose:
-      x: 1.7558
-      y: 1.6492
-      z: 0.0
 
 robot2/amcl_map_client:
   ros__parameters:
