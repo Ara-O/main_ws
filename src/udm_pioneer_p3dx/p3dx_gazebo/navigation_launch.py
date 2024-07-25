@@ -25,7 +25,6 @@ def generate_launch_description():
     # amcl_config_robot2 = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', "amcl_config_robot2.yaml")
     # default_map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'feb2_world.yaml')
 
-
     lifecycle_nodes = [
                          'map_server', 
                         'robot1/amcl',

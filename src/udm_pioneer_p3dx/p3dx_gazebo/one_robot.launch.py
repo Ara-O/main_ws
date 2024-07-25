@@ -57,19 +57,17 @@ def spawn_robot(context, *args, **kwargs):
     )
 
     amcl_node = Node(
-            namespace=robot_name,
-            package='nav2_amcl',
-            executable='amcl',
-            name='amcl',
-            output='screen',
-            parameters=[amcl_config_file,
-              {'initial_pose_x': x},
-              {'initial_pose_y': y},
-            ]
-    ),
+        namespace=robot_name,
+        package='nav2_amcl',
+        executable='amcl',
+        name='amcl',
+        output='screen',
+        parameters=[amcl_config_file,
+                    {'initial_pose_x': x},
+                    {'initial_pose_y': y}]
+    )
 
-
-    return [urdf_spawner, joint_state_publisher, robot_state_publisher]
+    return [urdf_spawner, joint_state_publisher, robot_state_publisher, amcl_node]
 
 def generate_launch_description():
     # Declare launch arguments
@@ -87,4 +85,3 @@ def generate_launch_description():
     ld.add_action(OpaqueFunction(function=spawn_robot))
 
     return ld
-

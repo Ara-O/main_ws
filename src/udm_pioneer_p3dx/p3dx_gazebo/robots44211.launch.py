@@ -3,6 +3,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, GroupAction
 from launch_ros.actions import PushRosNamespace, SetParameter
 from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 
@@ -36,26 +37,33 @@ def generate_launch_description():
 
     # Create the launch description and populate it
     ld = LaunchDescription([
-            DeclareLaunchArgument(
-                'map_file',
-                default_value=default_map_file,
-                description="The map that the robot will be localized in"
-            ),
-            Node(
-                package='nav2_map_server',
-                executable='map_server',
-                name='map_server',
-                output='screen',
-                parameters=[{'use_sim_time': True},
-                        {'topic_name':  'map'}, 
+        DeclareLaunchArgument(
+            'map_file',
+            default_value=default_map_file,
+            description="The map that the robot will be localized in"
+        ),
+        Node(
+            package='nav2_map_server',
+            executable='map_server',
+            name='map_server',
+            output='screen',
+            parameters=[{'use_sim_time': True},
+                        {'topic_name': 'map'},
                         {'frame_id': 'map'},
                         {'yaml_filename': LaunchConfiguration('map_file')}]
         ),
-      
-
+        robot1_group,
+        robot2_group,
+        Node(
+            package='nav2_lifecycle_manager',
+            executable='lifecycle_manager',
+            name='lifecycle_manager_map',
+            output='screen',
+            parameters=[{'use_sim_time': True},
+                        {'bond_timeout': 0.0},
+                        {'autostart': True},
+                        {'node_names': ['map_server', 'robot1/amcl', 'robot2/amcl']}]
+        )
     ])
-
-    ld.add_action(robot1_group)
-    ld.add_action(robot2_group)
 
     return ld
