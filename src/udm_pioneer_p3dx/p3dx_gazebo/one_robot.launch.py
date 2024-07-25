@@ -63,8 +63,8 @@ def spawn_robot(context, *args, **kwargs):
         name='amcl',
         output='screen',
         parameters=[amcl_config_file,
-                    {'initial_pose_x': x},
-                    {'initial_pose_y': y}]
+                    {'initial_pose': {'x':  float(x)}},
+                    {'initial_pose': {'y':  float(y)}}]
     )
 
     return [urdf_spawner, joint_state_publisher, robot_state_publisher, amcl_node]

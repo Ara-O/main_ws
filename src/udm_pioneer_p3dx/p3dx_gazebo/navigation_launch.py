@@ -26,9 +26,9 @@ def generate_launch_description():
     # default_map_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_navigation', 'maps', 'feb2_world.yaml')
 
     lifecycle_nodes = [
-                         'map_server', 
-                        'robot1/amcl',
-                        'robot2/amcl',
+                        #  'map_server', 
+                        # 'robot1/amcl',
+                        # 'robot2/amcl',
                         'robot2/controller_server',
                        'robot2/planner_server',
                        'robot2/recoveries_server',
