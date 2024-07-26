@@ -36,7 +36,7 @@ def generate_launch_description():
         }.items()
     )
 
-    p3dx_robot_launch_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_gazebo', 'robots44215.launch.py')
+    p3dx_robot_launch_file = os.path.join(get_package_share_directory('udm_pioneer_p3dx'), 'p3dx_gazebo', 'robots46211.launch.py')
 
     robot = IncludeLaunchDescription(
 	    PythonLaunchDescriptionSource([p3dx_robot_launch_file])
