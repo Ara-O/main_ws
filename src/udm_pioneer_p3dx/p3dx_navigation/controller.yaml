@@ -114,8 +114,8 @@ robot2:
         inflation_layer:
           enabled: True
           plugin: "nav2_costmap_2d::InflationLayer"
-          cost_scaling_factor: 3.0
-          inflation_radius: 0.55
+          cost_scaling_factor: 6.0
+          inflation_radius: 0.75
         voxel_layer:
           plugin: "nav2_costmap_2d::VoxelLayer"
           enabled: True
@@ -141,6 +141,8 @@ robot2:
           subscribe_to_updates: True
           map_topic: "/map"
         always_send_full_costmap: True
+        width: 2
+        height: 2
     local_costmap_client:
       ros__parameters:
         use_sim_time: True
@@ -265,8 +267,8 @@ robot1:
         inflation_layer:
           enabled: True
           plugin: "nav2_costmap_2d::InflationLayer"
-          cost_scaling_factor: 3.0
-          inflation_radius: 0.55
+          cost_scaling_factor: 6.0
+          inflation_radius: 0.75
         voxel_layer:
           plugin: "nav2_costmap_2d::VoxelLayer"
           enabled: True
@@ -292,6 +294,8 @@ robot1:
           subscribe_to_updates: True
           map_topic: "/map"
         always_send_full_costmap: True
+        width: 2
+        height: 2
     local_costmap_client:
       ros__parameters:
         use_sim_time: True
