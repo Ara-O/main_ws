@@ -4,7 +4,7 @@ robot2:
       costmap_topic: /robot2/local_costmap/costmap_raw
       footprint_topic: /robot2/local_costmap/published_footprint
       cycle_frequency: 10.0
-      recovery_plugins: ["spin", "backup", "wait"]
+      recovery_plugins: ["backup", "wait", "spin"]
       spin:
         plugin: "nav2_recoveries/Spin"
       backup:
@@ -26,7 +26,7 @@ robot1:
       costmap_topic: /robot1/local_costmap/costmap_raw
       footprint_topic: /robot1/local_costmap/published_footprint
       cycle_frequency: 10.0
-      recovery_plugins: ["spin", "backup", "wait"]
+      recovery_plugins: ["backup", "wait", "spin"]
       spin:
         plugin: "nav2_recoveries/Spin"
       backup:
