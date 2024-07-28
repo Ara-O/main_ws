@@ -34,7 +34,7 @@ def generate_launch_description():
     # Create the robot groups
     robot1_group = create_robot_group('1', 'robot1', 'robot1_tf', '-x 0.15149 -y -0.42965 -z 0.0')
     robot2_group = create_robot_group('2', 'robot2', 'robot2_tf', '-x -9.5607 -y 9.7069 -z 0.0')
-    robot3_group = create_robot_group('3', 'robot3', 'robot3_tf', '-x -16.1831 -y -18.5694 -z 0.0')
+    robot3_group = create_robot_group('3', 'robot3', 'robot3_tf', '-x -12.1831 -y 5.5694 -z 0.0')
 
     # Create the launch description and populate it
     ld = LaunchDescription([
