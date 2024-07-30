@@ -49,7 +49,7 @@ robot2:
           map_subscribe_transient_local: True
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
-          cost_scaling_factor: 3.0
+          cost_scaling_factor: 6.0
           inflation_radius: 0.55
         always_send_full_costmap: True
     global_costmap_client:
@@ -113,7 +113,7 @@ robot1:
           map_subscribe_transient_local: True
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
-          cost_scaling_factor: 3.0
+          cost_scaling_factor: 6.0
           inflation_radius: 0.55
         always_send_full_costmap: True
     global_costmap_client:
@@ -178,7 +178,7 @@ robot3:
           map_subscribe_transient_local: True
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
-          cost_scaling_factor: 3.0
+          cost_scaling_factor: 6.0
           inflation_radius: 0.55
         always_send_full_costmap: True
     global_costmap_client:
